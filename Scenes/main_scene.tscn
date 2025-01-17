@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8kuh6xtwbcfa"]
+
+[ext_resource type="PackedScene" uid="uid://bh7vkiuh7dham" path="res://Prefabs/player.tscn" id="1_58uyu"]
+
+[node name="MainScene" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_58uyu")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3.945, 3.945)
+limit_left = -10005070
