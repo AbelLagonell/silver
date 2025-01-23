@@ -1,9 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://bh7vkiuh7dham"]
+[gd_scene load_steps=13 format=3 uid="uid://bh7vkiuh7dham"]
 
 [ext_resource type="Texture2D" uid="uid://cqbxkd7f66kcs" path="res://Assets/2D-Pixel-Art-Character-Template/Walk/PlayerWalk 48x48.png" id="1_aaa54"]
 [ext_resource type="Texture2D" uid="uid://lwvhq60bw2xd" path="res://Assets/2D-Pixel-Art-Character-Template/Idle/Player Idle 48x48.png" id="2_fxd20"]
 [ext_resource type="Script" path="res://addons/combat_colliders/scripts/hurtbox/hurtbox_frame_data.gd" id="3_qgbe0"]
-[ext_resource type="Script" path="res://addons/combat_colliders/scripts/util/collider_resource.gd" id="4_mywd5"]
+[ext_resource type="Script" path="res://addons/combat_colliders/scripts/util/collider_frame_data.gd" id="4_gjnxb"]
 
 [sub_resource type="Animation" id="Animation_ecnn6"]
 length = 0.001
@@ -78,8 +78,9 @@ _data = {
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wfjmw"]
 
-[sub_resource type="Resource" id="Resource_o5yr2"]
-script = ExtResource("4_mywd5")
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ik4um"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1pa6e"]
 
 [node name="Player" type="Node2D"]
 
@@ -111,5 +112,22 @@ shape = SubResource("CapsuleShape2D_wfjmw")
 [node name="Hurtbox" type="Area2D" parent="."]
 script = ExtResource("3_qgbe0")
 hurtboxes = {
-0: [0, SubResource("Resource_o5yr2")]
+0: {
+"F0HU0": SubResource("CapsuleShape2D_ik4um")
+},
+1: {
+"F1HU0": SubResource("CapsuleShape2D_1pa6e")
 }
+}
+cFrame = 1
+
+[node name="F0HU0" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("CapsuleShape2D_ik4um")
+debug_color = Color(1, 1, 1, 0.1)
+script = ExtResource("4_gjnxb")
+
+[node name="F1HU0" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("CapsuleShape2D_1pa6e")
+debug_color = Color(1, 1, 1, 0.1)
+script = ExtResource("4_gjnxb")
+frame = 1

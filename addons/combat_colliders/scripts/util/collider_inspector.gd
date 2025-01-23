@@ -3,24 +3,36 @@ class_name ColliderInspector
 extends EditorInspectorPlugin
 
 var object: Object
-var collider_methods = [
-		"_add_collision_current",
-		"_add_collision_next",
-		"_reset_frames_current",
-		"_remove_frame_current",
-		"_reset_frames_all",
-		"_remove_frame_all" 
-	]
+var before = [
+			"_add_collision_current",
+			"_add_collision_next",
+			"_reset_frames_current",
+			"_remove_frame_current",
+
+			"_place_frame_after",
+			"_place_frame_before",
+			"_place_current_frame",
+			"_remove_self",
+		]
+var after = [
+			"_reset_frames_all",
+			"_remove_frame_all"
+		]
+	
 
 func _can_handle(_object: Object) -> bool:
-	for method in collider_methods:
+	for method in after:
+		if _object.has_method(method):
+			object = _object
+			return true
+	for method in before:
 		if _object.has_method(method):
 			object = _object
 			return true
 	return false
 	
 func _parse_begin(_object: Object) -> void:
-	for method in collider_methods.slice(0,4):
+	for method in before:
 		if (object.has_method(method)):
 			var name: String = ""
 			match method:
@@ -32,6 +44,14 @@ func _parse_begin(_object: Object) -> void:
 					name = "Delete Colliders in Current Frame"
 				"_remove_frame_current":
 					name = "Delete Current Frame"
+				"_place_frame_after":
+					name = "Place New Collider After This Frame"
+				"_place_frame_before":
+					name = "Place New Collider Before This Frame"
+				"_place_current_frame":
+					name = "Add Collider to this Frame"
+				"_remove_self":
+					name = "Remove Current Collider"
 			var btn = Button.new()
 			btn.text = name
 			btn.pressed.connect(_on_method_pressed.bind(object, method))
@@ -39,7 +59,7 @@ func _parse_begin(_object: Object) -> void:
 			add_custom_control(btn)
 
 func _parse_end(_object: Object) -> void:
-	for method in collider_methods.slice(4,):
+	for method in after:
 		if (object.has_method(method)):
 			var name: String = ""
 			match method:

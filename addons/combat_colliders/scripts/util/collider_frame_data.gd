@@ -1,13 +1,24 @@
+@tool
 class_name CombatCollider
+extends Node
 
-func _removeSelf():
-	print("removing self")
+@export var frame:int = 0:
+	set(_frame):
+		frame = _frame
+
+var parent: Node
+
+func _ready():
+	parent = get_parent()
+
+func _remove_self():
+	parent._remove_single_collider(frame, self.name)
 	
-func _placeFrameAfter():
-	print("adding collider to next frame")
+func _place_frame_after():
+	parent._add_collision_current(frame+1)
 
-func _placeFrameBefore():
-	print("Adding collider to the previous frame")
+func _place_frame_before():
+	parent._add_collision_current(frame-1)
 
-func _placeCurrentFrame():
-	print("Adding collider on the same frame")
+func _place_current_frame():
+	parent._add_collision_current(frame)
