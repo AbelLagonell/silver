@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://bh7vkiuh7dham"]
+[gd_scene load_steps=14 format=3 uid="uid://bh7vkiuh7dham"]
 
 [ext_resource type="Texture2D" uid="uid://cqbxkd7f66kcs" path="res://Assets/2D-Pixel-Art-Character-Template/Walk/PlayerWalk 48x48.png" id="1_aaa54"]
 [ext_resource type="Texture2D" uid="uid://lwvhq60bw2xd" path="res://Assets/2D-Pixel-Art-Character-Template/Idle/Player Idle 48x48.png" id="2_fxd20"]
-[ext_resource type="Script" path="res://addons/combat_colliders/scripts/hurtbox/hurtbox_frame_data.gd" id="3_qgbe0"]
-[ext_resource type="Script" path="res://addons/combat_colliders/scripts/util/collider_frame_data.gd" id="4_gjnxb"]
+[ext_resource type="Script" path="res://addons/combat_colliders/scripts/core/hitbox_frame_data.gd" id="3_1en06"]
+[ext_resource type="Script" path="res://addons/combat_colliders/scripts/core/hurtbox_frame_data.gd" id="3_qgbe0"]
+[ext_resource type="Script" path="res://addons/combat_colliders/scripts/util/collider_manip.gd" id="4_6q8fn"]
 
 [sub_resource type="Animation" id="Animation_ecnn6"]
 length = 0.001
@@ -78,9 +79,9 @@ _data = {
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wfjmw"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ik4um"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j1c6p"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1pa6e"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_65dst"]
 
 [node name="Player" type="Node2D"]
 
@@ -106,28 +107,42 @@ hframes = 10
 frame = 9
 
 [node name="EnvCollision" type="CollisionShape2D" parent="CharacterBody2D"]
-visibility_layer = 0
 shape = SubResource("CapsuleShape2D_wfjmw")
 
 [node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 256
+collision_mask = 256
 script = ExtResource("3_qgbe0")
-hurtboxes = {
+colliders = {
 0: {
-"F0HU0": SubResource("CapsuleShape2D_ik4um")
-},
-1: {
-"F1HU0": SubResource("CapsuleShape2D_1pa6e")
+"F0HU0": SubResource("CapsuleShape2D_j1c6p")
 }
 }
-cFrame = 1
+debug_color = Color(1, 1, 1, 0.1)
+suffix = "HU"
 
 [node name="F0HU0" type="CollisionShape2D" parent="Hurtbox"]
-shape = SubResource("CapsuleShape2D_ik4um")
+shape = SubResource("CapsuleShape2D_j1c6p")
 debug_color = Color(1, 1, 1, 0.1)
-script = ExtResource("4_gjnxb")
+script = ExtResource("4_6q8fn")
 
-[node name="F1HU0" type="CollisionShape2D" parent="Hurtbox"]
-shape = SubResource("CapsuleShape2D_1pa6e")
-debug_color = Color(1, 1, 1, 0.1)
-script = ExtResource("4_gjnxb")
-frame = 1
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 256
+collision_mask = 256
+script = ExtResource("3_1en06")
+knockback/has = true
+knockback/direction = Vector2(0.165, 0)
+knockback/magnitude = 0.0
+ui_effect/has = false
+colliders = {
+0: {
+"F0HI0": SubResource("CapsuleShape2D_65dst")
+}
+}
+debug_color = Color(1, 0, 0, 0.2)
+suffix = "HI"
+
+[node name="F0HI0" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CapsuleShape2D_65dst")
+debug_color = Color(1, 0, 0, 0.2)
+script = ExtResource("4_6q8fn")

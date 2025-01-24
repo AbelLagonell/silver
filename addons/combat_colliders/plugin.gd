@@ -8,7 +8,8 @@ func _enter_tree() -> void:
 	# Initialization of the plugin goes here
 	collider_inspector_plugin = ColliderInspectorPlugin.new()
 	add_inspector_plugin(collider_inspector_plugin)
-	add_custom_type("Hurtbox", "Area2D", preload("scripts/hurtbox/hurtbox_frame_data.gd"), preload("res://icon.svg"))
+	add_custom_type("Hurtbox", "Area2D", preload("scripts/core/hurtbox_frame_data.gd"), preload("res://icon.svg"))
+	add_custom_type("Hitbox", "Area2D", preload("scripts/core/hitbox_frame_data.gd"), preload("res://icon.svg"))
 
 
 func _exit_tree() -> void:
