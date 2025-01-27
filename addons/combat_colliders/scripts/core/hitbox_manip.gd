@@ -1,12 +1,13 @@
-@tool
-class_name HitboxFrameData
-extends ColliderFrameData
+class_name HitBoxShape
+extends HurtBoxShape
 
 var damage: int = 0
 
 # Knockback
 var knockback: bool = false
-var knockback_direction: float = 0.0
+var knockback_toggle: bool = false
+var knockback_vector: Vector2 = Vector2(0,0)
+var knockback_angle: float = 0.0
 var knockback_magnitude: float = 0.0
 
 # UI
@@ -18,8 +19,12 @@ func _get(property):
 	# Knockback group
 	if property == "knockback/has":
 		return knockback
-	if property == "knockback/direction":
-		return knockback_direction
+	if property == "knockback/advanced":
+		return knockback_toggle
+	if property == "knockback/vector":
+		return knockback_vector
+	if property == "knockback/angle":
+		return knockback_angle
 	if property == "knockback/magnitude":
 		return knockback_magnitude
 	
@@ -37,8 +42,15 @@ func _set(property, value):
 		knockback = value
 		notify_property_list_changed()
 		return true
-	if property == "knockback/direction":
-		knockback_direction = value
+	if property == "knockback/advanced":
+		knockback_toggle = value
+		notify_property_list_changed()
+		return true
+	if property == "knockback/vector":
+		knockback_vector = value
+		return true
+	if property == "knockback/angle":
+		knockback_angle = value
 		return true
 	if property == "knockback/magnitude":
 		knockback_magnitude = value
@@ -68,11 +80,28 @@ func _get_property_list():
 		"name": "knockback/has",
 		"type": TYPE_BOOL
 	})
-	if knockback == true:
+	if knockback:
+		property_list.append({
+		"hint": PROPERTY_HINT_NONE,
+		"usage": PROPERTY_USAGE_DEFAULT,
+		"name": "knockback/advanced",
+		"type": TYPE_BOOL
+	})
+	
+	if knockback && knockback_toggle:
+		property_list.append({
+			"hint": PROPERTY_HINT_NONE,
+			"usage": PROPERTY_USAGE_DEFAULT,
+			"name": "knockback/vector",
+			"type": TYPE_VECTOR2
+		})
+	
+	if knockback && !knockback_toggle:
 		property_list.append({
 			"hint": PROPERTY_HINT_RANGE,
-			"usage": "-360,360,1,or_greater,or_less",
-			"name": "knockback/direction",
+			"hint_string": "-360,360,degrees",
+			"usage": PROPERTY_USAGE_DEFAULT,
+			"name": "knockback/angle",
 			"type": TYPE_FLOAT
 		})
 		property_list.append({
@@ -89,7 +118,7 @@ func _get_property_list():
 		"name": "ui_effect/has",
 		"type": TYPE_BOOL
 	})
-	if ui_effect == true:
+	if ui_effect:
 		property_list.append({
 			"hint": PROPERTY_HINT_NONE,
 			"usage": PROPERTY_USAGE_DEFAULT,
@@ -104,9 +133,3 @@ func _get_property_list():
 		})
 	
 	return property_list
-
-func _ready() -> void:
-	super._ready()
-	debug_color = Color(Color.RED, 0.2)
-	suffix = "HI"
-	

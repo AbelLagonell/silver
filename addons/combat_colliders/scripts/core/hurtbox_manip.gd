@@ -1,11 +1,11 @@
-class_name CombatCollider
-extends Node
+class_name HurtBoxShape
+extends CollisionShape2D
 
 @export var frame:int = 0:
 	set(_frame):
 		frame = _frame
 
-var parent: Node
+var parent: Collider_Frame_Data
 
 func _ready():
 	parent = get_parent()

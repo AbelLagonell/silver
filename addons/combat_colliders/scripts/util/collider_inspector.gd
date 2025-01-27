@@ -1,5 +1,3 @@
-@tool
-class_name ColliderInspector 
 extends EditorInspectorPlugin
 
 var object: Object
@@ -76,5 +74,5 @@ func _parse_end(_object: Object) -> void:
 			
 			add_custom_control(btn)
 
-func _on_method_pressed(object, method):
-	object.call(method)
+func _on_method_pressed(_object, method):
+	_object.call_deferred(method)

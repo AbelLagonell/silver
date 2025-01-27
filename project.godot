@@ -19,6 +19,11 @@ config/icon="res://icon.svg"
 
 enabled=PackedStringArray("res://addons/combat_colliders/plugin.cfg", "res://addons/godot-plugin-refresher/plugin.cfg")
 
+[layer_names]
+
+2d_physics/layer_2="player_collision"
+2d_physics/layer_3="enemy_collision"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0

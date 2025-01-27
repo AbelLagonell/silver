@@ -1,17 +1,18 @@
-[gd_scene load_steps=14 format=3 uid="uid://bh7vkiuh7dham"]
+[gd_scene load_steps=24 format=3 uid="uid://bh7vkiuh7dham"]
 
 [ext_resource type="Texture2D" uid="uid://cqbxkd7f66kcs" path="res://Assets/2D-Pixel-Art-Character-Template/Walk/PlayerWalk 48x48.png" id="1_aaa54"]
 [ext_resource type="Texture2D" uid="uid://lwvhq60bw2xd" path="res://Assets/2D-Pixel-Art-Character-Template/Idle/Player Idle 48x48.png" id="2_fxd20"]
-[ext_resource type="Script" path="res://addons/combat_colliders/scripts/core/hitbox_frame_data.gd" id="3_1en06"]
-[ext_resource type="Script" path="res://addons/combat_colliders/scripts/core/hurtbox_frame_data.gd" id="3_qgbe0"]
-[ext_resource type="Script" path="res://addons/combat_colliders/scripts/util/collider_manip.gd" id="4_6q8fn"]
+[ext_resource type="Texture2D" uid="uid://dml82ntnopurk" path="res://Assets/2D-Pixel-Art-Character-Template/Punch/Player Punch 64x64.png" id="3_lw3qy"]
+[ext_resource type="Script" path="res://addons/combat_colliders/scripts/core/collider_frame_data.gd" id="4_dpxp4"]
+[ext_resource type="Script" path="res://addons/combat_colliders/scripts/core/hitbox_manip.gd" id="5_0fehd"]
+[ext_resource type="Script" path="res://addons/combat_colliders/scripts/core/hurtbox_manip.gd" id="6_hmapf"]
 
 [sub_resource type="Animation" id="Animation_ecnn6"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CharacterBody2D/Idle:frame")
+tracks/0/enabled = false
+tracks/0/path = NodePath("Idle:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -22,8 +23,8 @@ tracks/0/keys = {
 }
 tracks/1/type = "value"
 tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CharacterBody2D/Walk:frame")
+tracks/1/enabled = false
+tracks/1/path = NodePath("Walk:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -31,6 +32,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Punch:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fia2p"]
@@ -44,7 +57,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CharacterBody2D/Idle:frame")
+tracks/0/path = NodePath("Idle:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -54,6 +67,78 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 }
 
+[sub_resource type="Animation" id="Animation_bicse"]
+resource_name = "Punch"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Punch:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Punch/Hurt")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"start"
+}, {
+"args": [],
+"method": &"next_frame"
+}, {
+"args": [],
+"method": &"next_frame"
+}, {
+"args": [],
+"method": &"next_frame"
+}, {
+"args": [],
+"method": &"next_frame"
+}, {
+"args": [],
+"method": &"next_frame"
+}, {
+"args": [],
+"method": &"next_frame"
+}, {
+"args": [],
+"method": &"end"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Punch/Hit")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"start"
+}, {
+"args": [],
+"method": &"next_frame"
+}, {
+"args": [],
+"method": &"end"
+}]
+}
+
 [sub_resource type="Animation" id="Animation_3yq18"]
 length = 0.7
 loop_mode = 1
@@ -61,7 +146,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CharacterBody2D/Walk:frame")
+tracks/0/path = NodePath("Walk:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -74,75 +159,205 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8iwc4"]
 _data = {
 "Idle": SubResource("Animation_4docx"),
+"Punch": SubResource("Animation_bicse"),
 "Walk": SubResource("Animation_3yq18")
 }
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gjdyj"]
+radius = 3.0
+height = 20.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a2j4a"]
+radius = 2.0
+height = 22.3597
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ee1mk"]
+radius = 2.0
+height = 11.6344
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rcfiu"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_iu3pr"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4nmon"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tik4f"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yhwv0"]
+height = 27.2007
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kyq4k"]
+height = 26.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nju3i"]
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wfjmw"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j1c6p"]
+[node name="Player" type="CharacterBody2D"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_65dst"]
-
-[node name="Player" type="Node2D"]
-
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterBody2D"]
-root_node = NodePath("../..")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_fia2p"),
 "PlaceHolder_Player": SubResource("AnimationLibrary_8iwc4")
 }
-autoplay = "PlaceHolder_Player/Walk"
+autoplay = "PlaceHolder_Player/Punch"
 
-[node name="Walk" type="Sprite2D" parent="CharacterBody2D"]
+[node name="Walk" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("1_aaa54")
 hframes = 8
 frame = 1
 
-[node name="Idle" type="Sprite2D" parent="CharacterBody2D"]
+[node name="Idle" type="Sprite2D" parent="."]
 visible = false
 texture = ExtResource("2_fxd20")
 hframes = 10
 frame = 9
 
-[node name="EnvCollision" type="CollisionShape2D" parent="CharacterBody2D"]
-shape = SubResource("CapsuleShape2D_wfjmw")
+[node name="Punch" type="Sprite2D" parent="."]
+texture = ExtResource("3_lw3qy")
+hframes = 8
 
-[node name="Hurtbox" type="Area2D" parent="."]
-collision_layer = 256
-collision_mask = 256
-script = ExtResource("3_qgbe0")
+[node name="Hit" type="Area2D" parent="Punch"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("4_dpxp4")
 colliders = {
 0: {
-"F0HU0": SubResource("CapsuleShape2D_j1c6p")
+"F0HI0": SubResource("CapsuleShape2D_gjdyj"),
+"F0HI1": SubResource("CapsuleShape2D_a2j4a")
+},
+1: {
+"F1HI0": SubResource("CapsuleShape2D_ee1mk")
+}
+}
+hurtbox_or_hitbox = true
+debug_color = Color(1, 0, 0, 0.2)
+suffix = "HI"
+
+[node name="F0HI0" type="CollisionShape2D" parent="Punch/Hit"]
+visible = false
+position = Vector2(22, 0)
+rotation = 1.57079
+shape = SubResource("CapsuleShape2D_gjdyj")
+disabled = true
+debug_color = Color(1, 0, 0, 0.2)
+script = ExtResource("5_0fehd")
+
+[node name="F1HI0" type="CollisionShape2D" parent="Punch/Hit"]
+visible = false
+position = Vector2(26, 5)
+rotation = 0.609139
+shape = SubResource("CapsuleShape2D_ee1mk")
+disabled = true
+debug_color = Color(1, 0, 0, 0.2)
+script = ExtResource("5_0fehd")
+frame = 1
+
+[node name="F0HI1" type="CollisionShape2D" parent="Punch/Hit"]
+visible = false
+position = Vector2(2, 2)
+rotation = 1.38157
+shape = SubResource("CapsuleShape2D_a2j4a")
+disabled = true
+debug_color = Color(1, 0, 0, 0.2)
+script = ExtResource("5_0fehd")
+
+[node name="Hurt" type="Area2D" parent="Punch"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("4_dpxp4")
+colliders = {
+0: {
+"F0HU0": SubResource("CapsuleShape2D_rcfiu")
+},
+1: {
+"F1HU0": SubResource("CapsuleShape2D_iu3pr")
+},
+2: {
+"F2HU0": SubResource("CapsuleShape2D_4nmon")
+},
+3: {
+"F3HU0": SubResource("CapsuleShape2D_tik4f")
+},
+4: {
+"F4HU0": SubResource("CapsuleShape2D_yhwv0")
+},
+5: {
+"F5HU0": SubResource("CapsuleShape2D_kyq4k")
+},
+6: {
+"F6HU0": SubResource("CapsuleShape2D_nju3i")
 }
 }
 debug_color = Color(1, 1, 1, 0.1)
 suffix = "HU"
 
-[node name="F0HU0" type="CollisionShape2D" parent="Hurtbox"]
-shape = SubResource("CapsuleShape2D_j1c6p")
+[node name="F0HU0" type="CollisionShape2D" parent="Punch/Hurt"]
+visible = false
+position = Vector2(-3, 2)
+shape = SubResource("CapsuleShape2D_rcfiu")
+disabled = true
 debug_color = Color(1, 1, 1, 0.1)
-script = ExtResource("4_6q8fn")
+script = ExtResource("6_hmapf")
 
-[node name="Hitbox" type="Area2D" parent="."]
-collision_layer = 256
-collision_mask = 256
-script = ExtResource("3_1en06")
-knockback/has = true
-knockback/direction = Vector2(0.165, 0)
-knockback/magnitude = 0.0
-ui_effect/has = false
-colliders = {
-0: {
-"F0HI0": SubResource("CapsuleShape2D_65dst")
-}
-}
-debug_color = Color(1, 0, 0, 0.2)
-suffix = "HI"
+[node name="F1HU0" type="CollisionShape2D" parent="Punch/Hurt"]
+visible = false
+position = Vector2(-6, 3)
+shape = SubResource("CapsuleShape2D_iu3pr")
+disabled = true
+debug_color = Color(1, 1, 1, 0.1)
+script = ExtResource("6_hmapf")
+frame = 1
 
-[node name="F0HI0" type="CollisionShape2D" parent="Hitbox"]
-shape = SubResource("CapsuleShape2D_65dst")
-debug_color = Color(1, 0, 0, 0.2)
-script = ExtResource("4_6q8fn")
+[node name="F2HU0" type="CollisionShape2D" parent="Punch/Hurt"]
+visible = false
+position = Vector2(-4, 3)
+shape = SubResource("CapsuleShape2D_4nmon")
+disabled = true
+debug_color = Color(1, 1, 1, 0.1)
+script = ExtResource("6_hmapf")
+frame = 2
+
+[node name="F3HU0" type="CollisionShape2D" parent="Punch/Hurt"]
+visible = false
+position = Vector2(13, 4)
+rotation = 0.566597
+shape = SubResource("CapsuleShape2D_tik4f")
+disabled = true
+debug_color = Color(1, 1, 1, 0.1)
+script = ExtResource("6_hmapf")
+frame = 3
+
+[node name="F4HU0" type="CollisionShape2D" parent="Punch/Hurt"]
+visible = false
+position = Vector2(13, 6)
+rotation = 0.61586
+shape = SubResource("CapsuleShape2D_yhwv0")
+disabled = true
+debug_color = Color(1, 1, 1, 0.1)
+script = ExtResource("6_hmapf")
+frame = 4
+
+[node name="F5HU0" type="CollisionShape2D" parent="Punch/Hurt"]
+visible = false
+position = Vector2(12, 4)
+rotation = 0.311467
+shape = SubResource("CapsuleShape2D_kyq4k")
+disabled = true
+debug_color = Color(1, 1, 1, 0.1)
+script = ExtResource("6_hmapf")
+frame = 5
+
+[node name="F6HU0" type="CollisionShape2D" parent="Punch/Hurt"]
+visible = false
+position = Vector2(4, 1)
+shape = SubResource("CapsuleShape2D_nju3i")
+disabled = true
+debug_color = Color(1, 1, 1, 0.1)
+script = ExtResource("6_hmapf")
+frame = 6
+
+[node name="EnvCollision" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CapsuleShape2D_wfjmw")
