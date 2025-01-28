@@ -1,11 +1,11 @@
-[gd_scene load_steps=24 format=3 uid="uid://bh7vkiuh7dham"]
+[gd_scene load_steps=26 format=3 uid="uid://bh7vkiuh7dham"]
 
 [ext_resource type="Texture2D" uid="uid://cqbxkd7f66kcs" path="res://Assets/2D-Pixel-Art-Character-Template/Walk/PlayerWalk 48x48.png" id="1_aaa54"]
 [ext_resource type="Texture2D" uid="uid://lwvhq60bw2xd" path="res://Assets/2D-Pixel-Art-Character-Template/Idle/Player Idle 48x48.png" id="2_fxd20"]
 [ext_resource type="Texture2D" uid="uid://dml82ntnopurk" path="res://Assets/2D-Pixel-Art-Character-Template/Punch/Player Punch 64x64.png" id="3_lw3qy"]
-[ext_resource type="Script" path="res://addons/combat_colliders/scripts/core/collider_frame_data.gd" id="4_dpxp4"]
-[ext_resource type="Script" path="res://addons/combat_colliders/scripts/core/hitbox_manip.gd" id="5_0fehd"]
-[ext_resource type="Script" path="res://addons/combat_colliders/scripts/core/hurtbox_manip.gd" id="6_hmapf"]
+[ext_resource type="Script" path="res://addons/combat_colliders/core/collider_frame_data.gd" id="4_dpxp4"]
+[ext_resource type="Script" path="res://addons/combat_colliders/core/hitbox_manip.gd" id="5_0fehd"]
+[ext_resource type="Script" path="res://addons/combat_colliders/core/hurtbox_manip.gd" id="6_hmapf"]
 
 [sub_resource type="Animation" id="Animation_ecnn6"]
 length = 0.001
@@ -163,17 +163,18 @@ _data = {
 "Walk": SubResource("Animation_3yq18")
 }
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gjdyj"]
-radius = 3.0
-height = 20.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dja1a"]
+radius = 4.0
+height = 26.0
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a2j4a"]
-radius = 2.0
-height = 22.3597
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l33f7"]
+radius = 3.09293
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ee1mk"]
-radius = 2.0
-height = 11.6344
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nulyb"]
+radius = 3.6014
+height = 15.0928
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nk7g2"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rcfiu"]
 
@@ -189,7 +190,9 @@ height = 27.2007
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kyq4k"]
 height = 26.0
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nju3i"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_skr3p"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m45b7"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wfjmw"]
 
@@ -201,6 +204,7 @@ libraries = {
 "PlaceHolder_Player": SubResource("AnimationLibrary_8iwc4")
 }
 autoplay = "PlaceHolder_Player/Punch"
+speed_scale = 0.345
 
 [node name="Walk" type="Sprite2D" parent="."]
 visible = false
@@ -219,49 +223,50 @@ texture = ExtResource("3_lw3qy")
 hframes = 8
 
 [node name="Hit" type="Area2D" parent="Punch"]
-collision_layer = 2
+collision_layer = 4
 collision_mask = 0
 script = ExtResource("4_dpxp4")
 colliders = {
 0: {
-"F0HI0": SubResource("CapsuleShape2D_gjdyj"),
-"F0HI1": SubResource("CapsuleShape2D_a2j4a")
+"F0HI0": SubResource("CapsuleShape2D_dja1a"),
+"F0HI1": SubResource("CapsuleShape2D_l33f7")
 },
 1: {
-"F1HI0": SubResource("CapsuleShape2D_ee1mk")
+"F1HI0": SubResource("CapsuleShape2D_nulyb")
 }
 }
-hurtbox_or_hitbox = true
+shape_2D = SubResource("CapsuleShape2D_nk7g2")
+is_hitbox = true
 debug_color = Color(1, 0, 0, 0.2)
 suffix = "HI"
 
 [node name="F0HI0" type="CollisionShape2D" parent="Punch/Hit"]
 visible = false
-position = Vector2(22, 0)
+position = Vector2(21, -1)
 rotation = 1.57079
-shape = SubResource("CapsuleShape2D_gjdyj")
+shape = SubResource("CapsuleShape2D_dja1a")
+disabled = true
+debug_color = Color(1, 0, 0, 0.2)
+script = ExtResource("5_0fehd")
+
+[node name="F0HI1" type="CollisionShape2D" parent="Punch/Hit"]
+visible = false
+position = Vector2(3, 2)
+rotation = 1.45886
+shape = SubResource("CapsuleShape2D_l33f7")
 disabled = true
 debug_color = Color(1, 0, 0, 0.2)
 script = ExtResource("5_0fehd")
 
 [node name="F1HI0" type="CollisionShape2D" parent="Punch/Hit"]
 visible = false
-position = Vector2(26, 5)
-rotation = 0.609139
-shape = SubResource("CapsuleShape2D_ee1mk")
+position = Vector2(26, 4)
+rotation = 0.739848
+shape = SubResource("CapsuleShape2D_nulyb")
 disabled = true
 debug_color = Color(1, 0, 0, 0.2)
 script = ExtResource("5_0fehd")
 frame = 1
-
-[node name="F0HI1" type="CollisionShape2D" parent="Punch/Hit"]
-visible = false
-position = Vector2(2, 2)
-rotation = 1.38157
-shape = SubResource("CapsuleShape2D_a2j4a")
-disabled = true
-debug_color = Color(1, 0, 0, 0.2)
-script = ExtResource("5_0fehd")
 
 [node name="Hurt" type="Area2D" parent="Punch"]
 collision_layer = 0
@@ -286,10 +291,12 @@ colliders = {
 5: {
 "F5HU0": SubResource("CapsuleShape2D_kyq4k")
 },
-6: {
-"F6HU0": SubResource("CapsuleShape2D_nju3i")
+7: {
+"F7HU0": SubResource("CapsuleShape2D_skr3p")
 }
 }
+cFrame = 7
+shape_2D = SubResource("CapsuleShape2D_m45b7")
 debug_color = Color(1, 1, 1, 0.1)
 suffix = "HU"
 
@@ -349,14 +356,14 @@ debug_color = Color(1, 1, 1, 0.1)
 script = ExtResource("6_hmapf")
 frame = 5
 
-[node name="F6HU0" type="CollisionShape2D" parent="Punch/Hurt"]
+[node name="F7HU0" type="CollisionShape2D" parent="Punch/Hurt"]
 visible = false
-position = Vector2(4, 1)
-shape = SubResource("CapsuleShape2D_nju3i")
+position = Vector2(5, 1)
+shape = SubResource("CapsuleShape2D_skr3p")
 disabled = true
 debug_color = Color(1, 1, 1, 0.1)
 script = ExtResource("6_hmapf")
-frame = 6
+frame = 7
 
 [node name="EnvCollision" type="CollisionShape2D" parent="."]
 visible = false

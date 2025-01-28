@@ -1,7 +1,7 @@
 @tool
 extends EditorPlugin
 
-const ColliderInspectorPlugin = preload("scripts/util/collider_inspector.gd")
+const ColliderInspectorPlugin = preload("util/collider_inspector.gd")
 var collider_inspector_plugin
 
 func _enter_tree() -> void:
