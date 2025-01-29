@@ -20,8 +20,22 @@ signal ui_effect(hitstop:float, screen_shake: float)
 ## The current frame number can be changed but try to keep it sequential
 @export_range(0,10,1,"or_greater") var cFrame: int = 0
 
+enum _ShapeTypes {CIRCLE, RECTANGLE, CAPSULE}
 ## The default shape that all new colliders will get once they are initialized
-@export var shape: Shape2D = CapsuleShape2D.new()
+@export var shape_type : _ShapeTypes = _ShapeTypes.CAPSULE : 
+	set(value):
+		match value:
+			_ShapeTypes.CIRCLE:
+				_shape = CircleShape2D
+			_ShapeTypes.RECTANGLE:
+				_shape = RectangleShape2D
+			_ShapeTypes.CAPSULE:
+				_shape = CapsuleShape2D
+		shape_type = value
+			
+			
+var _shape = CapsuleShape2D
+
 
 ## Determines if the colliders are going to be in the correct layer index
 @export var is_enemy : bool = false:
@@ -70,8 +84,10 @@ func _change_collision(hitbox: bool, enemy:bool):
 	set_collision_mask_value(3, enemy && !hitbox)
 
 func _ready():
+	set_collision_layer_value(1, false)
+	set_collision_mask_value(1, false)
+	
 	area_shape_entered.connect(_on_area_shape_entered)
-	shape = CapsuleShape2D.new()
 	# Ensure the dictionary is initialized
 	if not colliders:
 		colliders = {0: {}}
@@ -85,7 +101,7 @@ func _add_collision_current(frame: int = cFrame) -> void:
 		colliders[frame] = {}
 	
 	var shape_name = "F%d%s%d" % [frame, suffix, colliders[frame].size()]
-	var capsule_shape = shape
+	var capsule_shape = _shape.new()
 	
 	var collision_shape : CollisionShape2D
 	if is_hitbox:

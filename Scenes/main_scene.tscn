@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b8kuh6xtwbcfa"]
+[gd_scene load_steps=6 format=3 uid="uid://b8kuh6xtwbcfa"]
 
 [ext_resource type="PackedScene" uid="uid://bh7vkiuh7dham" path="res://Prefabs/player.tscn" id="1_58uyu"]
 [ext_resource type="Script" path="res://addons/combat_colliders/core/collider_frame_data.gd" id="2_hxkj5"]
@@ -7,8 +7,6 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o6dlt"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1onpb"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5lmbe"]
 
 [node name="MainScene" type="Node2D"]
 
@@ -31,7 +29,6 @@ colliders = {
 }
 }
 cFrame = 5
-shape = SubResource("CapsuleShape2D_5lmbe")
 is_enemy = true
 debug_color = Color(1, 1, 1, 0.1)
 suffix = "HU"
