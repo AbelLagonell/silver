@@ -1,9 +1,10 @@
 @tool
+class_name CombatCollider
+extends Area2D
 ## A Collection class for [HurtBoxShape] and [HitBoxShape] objects to facilitate
 ##frame hit/hurtboxes for various action games
 ## Uses Layer 2 for player and Layer 3 for Enemy
-class_name Collider_Frame_Data
-extends Area2D
+
 
 ## When a hitbox enters a hurtbox, this will send out how much damage the hitbox does
 signal damage_taken(value:int)
@@ -14,13 +15,16 @@ signal knockback_taken(vector: Vector2)
 ##the screen will shake and if there is any hitstop that the move does
 signal ui_effect(hitstop:float, screen_shake: float)
 
+# The different Shape2D objects
+enum _ShapeTypes {CIRCLE, RECTANGLE, CAPSULE}
+
+
 ## Holds the combination of {[param String], [param Shape2D]} this is so 
 ##that the string holds the name of Collider in reference
 @export var colliders: Dictionary = {}
 ## The current frame number can be changed but try to keep it sequential
 @export_range(0,10,1,"or_greater") var cFrame: int = 0
 
-enum _ShapeTypes {CIRCLE, RECTANGLE, CAPSULE}
 ## The default shape that all new colliders will get once they are initialized
 @export var shape_type : _ShapeTypes = _ShapeTypes.CAPSULE : 
 	set(value):
@@ -33,9 +37,6 @@ enum _ShapeTypes {CIRCLE, RECTANGLE, CAPSULE}
 				_shape = CapsuleShape2D
 		shape_type = value
 			
-			
-var _shape = CapsuleShape2D
-
 
 ## Determines if the colliders are going to be in the correct layer index
 @export var is_enemy : bool = false:
@@ -43,7 +44,6 @@ var _shape = CapsuleShape2D
 		is_enemy = value
 		_change_collision(is_hitbox, is_enemy)
 		return true
-			
 
 ## Determines if the colliders that are being made 
 ##are either of [HitBoxShape] or [HurtBoxShape]
@@ -62,7 +62,9 @@ var _shape = CapsuleShape2D
 
 @export_group("Colors and Trees")
 ## Changes the [Color] of the [member CollisionShape2D.debug_color] of any new colliders
+
 @export var debug_color = Color(Color.SKY_BLUE, 0.41)
+
 ## Changes what the Identifier of the collider will be
 ## \n Example: F2[b]C[/b]3
 @export var suffix: String = "C"
@@ -76,12 +78,8 @@ var _shape = CapsuleShape2D
 ##so that all the colliders under this will always be active 
 @export var set_disabled:= false
 
-# A Utility function for layer management
-func _change_collision(hitbox: bool, enemy:bool):
-	set_collision_layer_value(3, !enemy && hitbox)
-	set_collision_layer_value(2, enemy && hitbox)
-	set_collision_mask_value(2, !enemy && !hitbox)
-	set_collision_mask_value(3, enemy && !hitbox)
+# The holding of the selected shape2D
+var _shape = CapsuleShape2D
 
 func _ready():
 	set_collision_layer_value(1, false)
@@ -92,6 +90,34 @@ func _ready():
 	if not colliders:
 		colliders = {0: {}}
 	end()
+
+## Place this on the first frame that you want the colliders to be active
+##[br] Usually the first frame for hurtboxes
+func start():
+	cFrame = 0
+	_hide_hurt_boxes()
+
+## Place this on each subsequent frame that you would want to go to the next frame
+func next_frame():
+	_add_frame()
+	_hide_hurt_boxes(cFrame)
+
+## Place this at the end, when you want all the colliders to be disabled.
+## Usually for the last frame of the animation with hurtboxes
+func end():
+	for f in colliders:
+		for shape_name in colliders[f]:
+			var node: Node = get_node_or_null(shape_name)
+			if node and is_instance_valid(node):
+				node.set_disabled(true and !set_disabled)
+				node.set_visible(false or set_visible)
+
+# A Utility function for layer management
+func _change_collision(hitbox: bool, enemy:bool):
+	set_collision_layer_value(3, !enemy && hitbox)
+	set_collision_layer_value(2, enemy && hitbox)
+	set_collision_mask_value(2, !enemy && !hitbox)
+	set_collision_mask_value(3, enemy && !hitbox)
 
 # Adds a Collision object based on hurt/hitbox with defaults 
 #based on what was chosen in the class
@@ -203,27 +229,6 @@ func _sub_frame():
 		current_index = keys.size() - 1
 	
 	cFrame = keys[current_index]
-
-## Place this on the first frame that you want the colliders to be active
-##[br] Usually the first frame for hurtboxes
-func start():
-	cFrame = 0
-	_hide_hurt_boxes()
-
-## Place this on each subsequent frame that you would want to go to the next frame
-func next_frame():
-	_add_frame()
-	_hide_hurt_boxes(cFrame)
-
-## Place this at the end, when you want all the colliders to be disabled.
-## Usually for the last frame of the animation with hurtboxes
-func end():
-	for f in colliders:
-		for shape_name in colliders[f]:
-			var node: Node = get_node_or_null(shape_name)
-			if node and is_instance_valid(node):
-				node.set_disabled(true and !set_disabled)
-				node.set_visible(false or set_visible)
 
 # Utility for getting when a hurtbox goes into a hitbox
 func _on_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int):

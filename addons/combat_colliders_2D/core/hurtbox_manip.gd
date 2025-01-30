@@ -1,14 +1,14 @@
-## A simple class that allows for [ColliderFrameData] to be able to detect collisions
 @tool
 class_name HurtBoxShape
 extends CollisionShape2D
+## A simple class that allows for [ColliderFrameData] to be able to detect collisions
 
 ## The frame that this collider belongs to
 @export var frame:int = 0:
 	set(_frame):
 		frame = _frame
 
-var _parent: Collider_Frame_Data
+var _parent: CombatCollider
 
 func _ready():
 	_parent = get_parent()

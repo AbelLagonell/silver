@@ -34,7 +34,7 @@ var has_ui_effect: bool = false:
 		notify_property_list_changed()
 ## The amount of time the game is paused after the hit is made
 var hit_stop: float = 0.0
-## The amount of screen shake the game has everytime this hits
+## The amount of screen shake the game has everytime this hits`
 var screen_shake_amount: float = 0.0
 
 ## Returns a Vector2 for how much knockback a given hurtbox will give

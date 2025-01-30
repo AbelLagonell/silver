@@ -1,6 +1,7 @@
 extends EditorInspectorPlugin
 
 var object: Object
+
 var before = [
 			"_add_collision_current",
 			"_add_collision_next",

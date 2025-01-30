@@ -2,11 +2,56 @@
 
 [ext_resource type="Texture2D" uid="uid://cqbxkd7f66kcs" path="res://Assets/2D-Pixel-Art-Character-Template/Walk/PlayerWalk 48x48.png" id="1_aaa54"]
 [ext_resource type="Texture2D" uid="uid://lwvhq60bw2xd" path="res://Assets/2D-Pixel-Art-Character-Template/Idle/Player Idle 48x48.png" id="2_fxd20"]
-[ext_resource type="Script" path="res://addons/combat_colliders/core/collider_frame_data.gd" id="4_dpxp4"]
-[ext_resource type="Script" path="res://addons/combat_colliders/core/hitbox_manip.gd" id="5_0fehd"]
+[ext_resource type="Script" path="res://addons/combat_colliders_2D/core/combat_collider.gd" id="4_dpxp4"]
+[ext_resource type="Script" path="res://addons/combat_colliders_2D/core/hitbox_manip.gd" id="5_0fehd"]
 [ext_resource type="Texture2D" uid="uid://dtrvfw32326fy" path="res://Assets/2D-Pixel-Art-Character-Template/Punch Cross/Player Punch Cross 64x64.png" id="5_wytxg"]
-[ext_resource type="Script" path="res://addons/combat_colliders/core/hurtbox_manip.gd" id="6_hmapf"]
+[ext_resource type="Script" path="res://addons/combat_colliders_2D/core/hurtbox_manip.gd" id="6_hmapf"]
 [ext_resource type="Texture2D" uid="uid://bw6mu5h2wwein" path="res://Assets/2D-Pixel-Art-Character-Template/Punch Jab/Player Jab 48x48.png" id="7_kc4e1"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a83to"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7rl3e"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d0ylv"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m23or"]
+radius = 9.48357
+height = 27.8517
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eowtt"]
+radius = 9.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7wv6e"]
+radius = 3.0
+height = 20.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dja1a"]
+radius = 4.0
+height = 26.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l33f7"]
+radius = 3.09293
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nulyb"]
+radius = 3.6014
+height = 15.0928
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_r6fnn"]
+radius = 9.84188
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bor5u"]
+radius = 8.02844
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i63jr"]
+radius = 7.6109
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mdrtm"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_86sbp"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0bjgd"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wfjmw"]
 
 [sub_resource type="Animation" id="Animation_ecnn6"]
 length = 0.001
@@ -64,6 +109,71 @@ _data = {
 "RESET": SubResource("Animation_ecnn6")
 }
 
+[sub_resource type="Animation" id="Animation_bicse"]
+resource_name = "Cross"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cross:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cross/Hurt")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.4, 0.5, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"start"
+}, {
+"args": [],
+"method": &"next_frame"
+}, {
+"args": [],
+"method": &"next_frame"
+}, {
+"args": [],
+"method": &"next_frame"
+}, {
+"args": [],
+"method": &"next_frame"
+}, {
+"args": [],
+"method": &"end"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Cross/Hit")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"start"
+}, {
+"args": [],
+"method": &"next_frame"
+}, {
+"args": [],
+"method": &"end"
+}]
+}
+
 [sub_resource type="Animation" id="Animation_4docx"]
 loop_mode = 1
 step = 0.1
@@ -87,40 +197,6 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"values": [{
-"args": [],
-"method": &"start"
-}, {
-"args": [],
-"method": &"end"
-}]
-}
-
-[sub_resource type="Animation" id="Animation_3yq18"]
-length = 0.7
-loop_mode = 1
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Walk:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Walk/Hurt")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.7),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [],
@@ -191,13 +267,14 @@ tracks/2/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_bicse"]
-resource_name = "Cross"
+[sub_resource type="Animation" id="Animation_3yq18"]
 length = 0.7
+loop_mode = 1
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Cross:frame")
+tracks/0/path = NodePath("Walk:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -209,47 +286,15 @@ tracks/0/keys = {
 tracks/1/type = "method"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Cross/Hurt")
+tracks/1/path = NodePath("Walk/Hurt")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.3, 0.4, 0.5, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [],
 "method": &"start"
-}, {
-"args": [],
-"method": &"next_frame"
-}, {
-"args": [],
-"method": &"next_frame"
-}, {
-"args": [],
-"method": &"next_frame"
-}, {
-"args": [],
-"method": &"next_frame"
-}, {
-"args": [],
-"method": &"end"
-}]
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Cross/Hit")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1),
-"values": [{
-"args": [],
-"method": &"start"
-}, {
-"args": [],
-"method": &"next_frame"
 }, {
 "args": [],
 "method": &"end"
@@ -264,59 +309,7 @@ _data = {
 "Walk": SubResource("Animation_3yq18")
 }
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a83to"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7rl3e"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d0ylv"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m23or"]
-radius = 9.48357
-height = 27.8517
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eowtt"]
-radius = 9.0
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7wv6e"]
-radius = 3.0
-height = 20.0
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dja1a"]
-radius = 4.0
-height = 26.0
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l33f7"]
-radius = 3.09293
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nulyb"]
-radius = 3.6014
-height = 15.0928
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_r6fnn"]
-radius = 9.84188
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bor5u"]
-radius = 8.02844
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i63jr"]
-radius = 7.6109
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mdrtm"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_86sbp"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0bjgd"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wfjmw"]
-
 [node name="Player" type="CharacterBody2D"]
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_fia2p"),
-"PlaceHolder_Player": SubResource("AnimationLibrary_8iwc4")
-}
-autoplay = "PlaceHolder_Player/Jab"
 
 [node name="Walk" type="Sprite2D" parent="."]
 visible = false
@@ -334,12 +327,13 @@ colliders = {
 "F0HU0": SubResource("CapsuleShape2D_a83to")
 }
 }
-shape_type = null
 debug_color = Color(1, 1, 1, 0.1)
 suffix = "HU"
 
 [node name="F0HU0" type="CollisionShape2D" parent="Walk/Hurt"]
+visible = false
 shape = SubResource("CapsuleShape2D_a83to")
+disabled = true
 debug_color = Color(1, 1, 1, 0.1)
 script = ExtResource("6_hmapf")
 
@@ -358,12 +352,13 @@ colliders = {
 "F0HU0": SubResource("CapsuleShape2D_7rl3e")
 }
 }
-shape_type = null
 debug_color = Color(1, 1, 1, 0.1)
 suffix = "HU"
 
 [node name="F0HU0" type="CollisionShape2D" parent="Idle/Hurt"]
+visible = false
 shape = SubResource("CapsuleShape2D_7rl3e")
+disabled = true
 debug_color = Color(1, 1, 1, 0.1)
 script = ExtResource("6_hmapf")
 
@@ -392,21 +387,27 @@ debug_color = Color(1, 1, 1, 0.1)
 suffix = "HU"
 
 [node name="F0HU0" type="CollisionShape2D" parent="Jab/Hurt"]
+visible = false
 shape = SubResource("CapsuleShape2D_d0ylv")
+disabled = true
 debug_color = Color(1, 1, 1, 0.1)
 script = ExtResource("6_hmapf")
 
 [node name="F1HU0" type="CollisionShape2D" parent="Jab/Hurt"]
+visible = false
 position = Vector2(3, 2)
 rotation = 0.347996
 shape = SubResource("CapsuleShape2D_m23or")
+disabled = true
 debug_color = Color(1, 1, 1, 0.1)
 script = ExtResource("6_hmapf")
 frame = 1
 
 [node name="F2HU0" type="CollisionShape2D" parent="Jab/Hurt"]
+visible = false
 position = Vector2(1, 1)
 shape = SubResource("CapsuleShape2D_eowtt")
+disabled = true
 debug_color = Color(1, 1, 1, 0.1)
 script = ExtResource("6_hmapf")
 frame = 2
@@ -426,9 +427,11 @@ debug_color = Color(1, 0, 0, 0.2)
 suffix = "HI"
 
 [node name="F0HI0" type="CollisionShape2D" parent="Jab/Hit"]
+visible = false
 position = Vector2(13, -1)
 rotation = -1.57079
 shape = SubResource("CapsuleShape2D_7wv6e")
+disabled = true
 debug_color = Color(1, 0, 0, 0.2)
 script = ExtResource("5_0fehd")
 damage = 2.0
@@ -452,7 +455,6 @@ colliders = {
 "F1HI0": SubResource("CapsuleShape2D_nulyb")
 }
 }
-shape_type = null
 is_hitbox = true
 debug_color = Color(1, 0, 0, 0.2)
 suffix = "HI"
@@ -519,43 +521,55 @@ debug_color = Color(1, 1, 1, 0.1)
 suffix = "HU"
 
 [node name="F0HU0" type="CollisionShape2D" parent="Cross/Hurt"]
+visible = false
 shape = SubResource("CapsuleShape2D_r6fnn")
+disabled = true
 debug_color = Color(1, 1, 1, 0.1)
 script = ExtResource("6_hmapf")
 
 [node name="F1HU0" type="CollisionShape2D" parent="Cross/Hurt"]
+visible = false
 position = Vector2(16, 3)
 rotation = 0.610775
 shape = SubResource("CapsuleShape2D_bor5u")
+disabled = true
 debug_color = Color(1, 1, 1, 0.1)
 script = ExtResource("6_hmapf")
 frame = 1
 
 [node name="F2HU0" type="CollisionShape2D" parent="Cross/Hurt"]
+visible = false
 position = Vector2(14, 2)
 rotation = 0.369104
 shape = SubResource("CapsuleShape2D_i63jr")
+disabled = true
 debug_color = Color(1, 1, 1, 0.1)
 script = ExtResource("6_hmapf")
 frame = 2
 
 [node name="F3HU0" type="CollisionShape2D" parent="Cross/Hurt"]
+visible = false
 position = Vector2(8, 0)
 shape = SubResource("CapsuleShape2D_mdrtm")
+disabled = true
 debug_color = Color(1, 1, 1, 0.1)
 script = ExtResource("6_hmapf")
 frame = 3
 
 [node name="F4HU0" type="CollisionShape2D" parent="Cross/Hurt"]
+visible = false
 position = Vector2(-3, 1)
 shape = SubResource("CapsuleShape2D_86sbp")
+disabled = true
 debug_color = Color(1, 1, 1, 0.1)
 script = ExtResource("6_hmapf")
 frame = 4
 
 [node name="F5HU0" type="CollisionShape2D" parent="Cross/Hurt"]
+visible = false
 position = Vector2(-2, 1)
 shape = SubResource("CapsuleShape2D_0bjgd")
+disabled = true
 debug_color = Color(1, 1, 1, 0.1)
 script = ExtResource("6_hmapf")
 frame = 5
@@ -563,3 +577,10 @@ frame = 5
 [node name="EnvCollision" type="CollisionShape2D" parent="."]
 visible = false
 shape = SubResource("CapsuleShape2D_wfjmw")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_fia2p"),
+"PlaceHolder_Player": SubResource("AnimationLibrary_8iwc4")
+}
+autoplay = "PlaceHolder_Player/Jab"
