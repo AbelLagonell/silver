@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://bh7vkiuh7dham"]
+[gd_scene load_steps=31 format=3 uid="uid://bh7vkiuh7dham"]
 
 [ext_resource type="Texture2D" uid="uid://cqbxkd7f66kcs" path="res://Assets/2D-Pixel-Art-Character-Template/Walk/PlayerWalk 48x48.png" id="1_aaa54"]
 [ext_resource type="Texture2D" uid="uid://lwvhq60bw2xd" path="res://Assets/2D-Pixel-Art-Character-Template/Idle/Player Idle 48x48.png" id="2_fxd20"]
@@ -7,8 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://dtrvfw32326fy" path="res://Assets/2D-Pixel-Art-Character-Template/Punch Cross/Player Punch Cross 64x64.png" id="5_wytxg"]
 [ext_resource type="Script" path="res://addons/combat_colliders/core/hurtbox_manip.gd" id="6_hmapf"]
 [ext_resource type="Texture2D" uid="uid://bw6mu5h2wwein" path="res://Assets/2D-Pixel-Art-Character-Template/Punch Jab/Player Jab 48x48.png" id="7_kc4e1"]
-[ext_resource type="Script" path="res://addons/custom_actions/core/custom_actions.gd" id="8_jcm1i"]
-[ext_resource type="Script" path="res://addons/custom_actions/core/action_holder.gd" id="9_uscxu"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a83to"]
 
@@ -586,9 +584,3 @@ libraries = {
 "PlaceHolder_Player": SubResource("AnimationLibrary_8iwc4")
 }
 autoplay = "PlaceHolder_Player/Jab"
-
-[node name="CustomActions" type="Node" parent="."]
-script = ExtResource("8_jcm1i")
-
-[node name="Action" type="Node" parent="CustomActions"]
-script = ExtResource("9_uscxu")
