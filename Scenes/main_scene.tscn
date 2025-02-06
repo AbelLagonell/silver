@@ -28,7 +28,6 @@ colliders = {
 "F5HU0": SubResource("CapsuleShape2D_1onpb")
 }
 }
-cFrame = 5
 is_enemy = true
 debug_color = Color(1, 1, 1, 0.1)
 suffix = "HU"
