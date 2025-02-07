@@ -1,5 +1,6 @@
-[gd_scene load_steps=31 format=3 uid="uid://bh7vkiuh7dham"]
+[gd_scene load_steps=32 format=3 uid="uid://bh7vkiuh7dham"]
 
+[ext_resource type="Script" path="res://Scripts/Player.cs" id="1_4c7kd"]
 [ext_resource type="Texture2D" uid="uid://cqbxkd7f66kcs" path="res://Assets/2D-Pixel-Art-Character-Template/Walk/PlayerWalk 48x48.png" id="1_aaa54"]
 [ext_resource type="Texture2D" uid="uid://lwvhq60bw2xd" path="res://Assets/2D-Pixel-Art-Character-Template/Idle/Player Idle 48x48.png" id="2_fxd20"]
 [ext_resource type="Script" path="res://addons/combat_colliders/core/combat_collider.gd" id="4_dpxp4"]
@@ -312,6 +313,8 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_4c7kd")
 
 [node name="Idle" type="Sprite2D" parent="."]
 visible = false
