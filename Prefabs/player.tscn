@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://bh7vkiuh7dham"]
+[gd_scene load_steps=31 format=3 uid="uid://bh7vkiuh7dham"]
 
 [ext_resource type="Texture2D" uid="uid://cqbxkd7f66kcs" path="res://Assets/2D-Pixel-Art-Character-Template/Walk/PlayerWalk 48x48.png" id="1_aaa54"]
 [ext_resource type="Texture2D" uid="uid://lwvhq60bw2xd" path="res://Assets/2D-Pixel-Art-Character-Template/Idle/Player Idle 48x48.png" id="2_fxd20"]
@@ -35,8 +35,6 @@ radius = 3.09293
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nulyb"]
 radius = 3.6014
 height = 15.0928
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jhhii"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_r6fnn"]
 radius = 9.84188
@@ -114,6 +112,7 @@ _data = {
 [sub_resource type="Animation" id="Animation_bicse"]
 resource_name = "Cross"
 length = 0.7
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -212,6 +211,7 @@ tracks/1/keys = {
 [sub_resource type="Animation" id="Animation_1ij4d"]
 resource_name = "Jab"
 length = 0.8
+loop_mode = 1
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -328,7 +328,6 @@ colliders = {
 "F0HU0": SubResource("CapsuleShape2D_7rl3e")
 }
 }
-current_frame = null
 debug_color = Color(1, 1, 1, 0.1)
 suffix = "HU"
 
@@ -355,7 +354,6 @@ colliders = {
 "F0HU0": SubResource("CapsuleShape2D_a83to")
 }
 }
-current_frame = null
 debug_color = Color(1, 1, 1, 0.1)
 suffix = "HU"
 
@@ -367,6 +365,7 @@ debug_color = Color(1, 1, 1, 0.1)
 script = ExtResource("6_hmapf")
 
 [node name="Jab" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("7_kc4e1")
 hframes = 10
 
@@ -387,7 +386,6 @@ colliders = {
 "F2HU0": SubResource("CapsuleShape2D_eowtt")
 }
 }
-current_frame = null
 debug_color = Color(1, 1, 1, 0.1)
 suffix = "HU"
 
@@ -427,7 +425,6 @@ colliders = {
 "F0HI0": SubResource("CapsuleShape2D_7wv6e")
 }
 }
-current_frame = null
 is_hitbox = true
 debug_color = Color(1, 0, 0, 0.2)
 suffix = "HI"
@@ -442,12 +439,10 @@ debug_color = Color(1, 0, 0, 0.2)
 script = ExtResource("5_0fehd")
 
 [node name="Cross" type="Sprite2D" parent="."]
-visible = false
 texture = ExtResource("5_wytxg")
 hframes = 7
 
 [node name="Hit" type="Area2D" parent="Cross"]
-visible = false
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("4_dpxp4")
@@ -458,12 +453,8 @@ colliders = {
 },
 1: {
 "F1HI0": SubResource("CapsuleShape2D_nulyb")
-},
-2: {
-"F2HI0": SubResource("CapsuleShape2D_jhhii")
 }
 }
-current_frame = null
 is_hitbox = true
 debug_color = Color(1, 0, 0, 0.2)
 suffix = "HI"
@@ -497,7 +488,6 @@ script = ExtResource("5_0fehd")
 frame = 1
 
 [node name="Hurt" type="Area2D" parent="Cross"]
-visible = false
 position = Vector2(-3, 1)
 collision_layer = 0
 collision_mask = 2
@@ -522,7 +512,6 @@ colliders = {
 "F5HU0": SubResource("CapsuleShape2D_0bjgd")
 }
 }
-current_frame = null
 debug_color = Color(1, 1, 1, 0.1)
 suffix = "HU"
 
@@ -589,4 +578,4 @@ libraries = {
 "": SubResource("AnimationLibrary_fia2p"),
 "PlaceHolder_Player": SubResource("AnimationLibrary_8iwc4")
 }
-autoplay = "PlaceHolder_Player/Jab"
+autoplay = "PlaceHolder_Player/Cross"
