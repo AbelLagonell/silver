@@ -1,0 +1,119 @@
+[gd_resource type="Resource" script_class="GUIDEMappingContext" load_steps=23 format=3 uid="uid://yjk4u5cnsfvr"]
+
+[ext_resource type="Script" path="res://addons/guide/guide_action_mapping.gd" id="1_tx6q8"]
+[ext_resource type="Resource" uid="uid://bj5vce0vqyju1" path="res://Assets/mapping_contexts/move.tres" id="2_1pw1y"]
+[ext_resource type="Script" path="res://addons/guide/guide_mapping_context.gd" id="2_b74h3"]
+[ext_resource type="Script" path="res://addons/guide/guide_input_mapping.gd" id="3_vu3n0"]
+[ext_resource type="Script" path="res://addons/guide/inputs/guide_input_key.gd" id="4_r8aus"]
+[ext_resource type="Script" path="res://addons/guide/modifiers/guide_modifier.gd" id="5_hrmim"]
+[ext_resource type="Script" path="res://addons/guide/modifiers/guide_modifier_negate.gd" id="6_6u2ws"]
+[ext_resource type="Script" path="res://addons/guide/modifiers/guide_modifier_input_swizzle.gd" id="7_3qxqy"]
+[ext_resource type="Script" path="res://addons/guide/triggers/guide_trigger.gd" id="8_dsmmm"]
+
+[sub_resource type="Resource" id="Resource_clfd1"]
+script = ExtResource("4_r8aus")
+key = 87
+shift = false
+control = false
+alt = false
+meta = false
+allow_additional_modifiers = true
+
+[sub_resource type="Resource" id="Resource_21nd4"]
+script = ExtResource("6_6u2ws")
+x = true
+y = true
+z = true
+
+[sub_resource type="Resource" id="Resource_2086u"]
+script = ExtResource("7_3qxqy")
+order = 0
+
+[sub_resource type="Resource" id="Resource_luyoi"]
+script = ExtResource("3_vu3n0")
+override_action_settings = false
+is_remappable = false
+display_name = ""
+display_category = ""
+input = SubResource("Resource_clfd1")
+modifiers = Array[ExtResource("5_hrmim")]([SubResource("Resource_21nd4"), SubResource("Resource_2086u")])
+triggers = Array[ExtResource("8_dsmmm")]([])
+metadata/_guide_triggers_collapsed = false
+
+[sub_resource type="Resource" id="Resource_34em7"]
+script = ExtResource("4_r8aus")
+key = 83
+shift = false
+control = false
+alt = false
+meta = false
+allow_additional_modifiers = true
+
+[sub_resource type="Resource" id="Resource_p211h"]
+script = ExtResource("7_3qxqy")
+order = 0
+
+[sub_resource type="Resource" id="Resource_dr84e"]
+script = ExtResource("3_vu3n0")
+override_action_settings = false
+is_remappable = false
+display_name = ""
+display_category = ""
+input = SubResource("Resource_34em7")
+modifiers = Array[ExtResource("5_hrmim")]([SubResource("Resource_p211h")])
+triggers = Array[ExtResource("8_dsmmm")]([])
+
+[sub_resource type="Resource" id="Resource_w3cg6"]
+script = ExtResource("4_r8aus")
+key = 65
+shift = false
+control = false
+alt = false
+meta = false
+allow_additional_modifiers = true
+
+[sub_resource type="Resource" id="Resource_r036k"]
+script = ExtResource("6_6u2ws")
+x = true
+y = true
+z = true
+
+[sub_resource type="Resource" id="Resource_pp32r"]
+script = ExtResource("3_vu3n0")
+override_action_settings = false
+is_remappable = false
+display_name = ""
+display_category = ""
+input = SubResource("Resource_w3cg6")
+modifiers = Array[ExtResource("5_hrmim")]([SubResource("Resource_r036k")])
+triggers = Array[ExtResource("8_dsmmm")]([])
+
+[sub_resource type="Resource" id="Resource_ytcxv"]
+script = ExtResource("4_r8aus")
+key = 68
+shift = false
+control = false
+alt = false
+meta = false
+allow_additional_modifiers = true
+
+[sub_resource type="Resource" id="Resource_5swbv"]
+script = ExtResource("3_vu3n0")
+override_action_settings = false
+is_remappable = false
+display_name = ""
+display_category = ""
+input = SubResource("Resource_ytcxv")
+modifiers = Array[ExtResource("5_hrmim")]([])
+triggers = Array[ExtResource("8_dsmmm")]([])
+
+[sub_resource type="Resource" id="Resource_1a4b8"]
+script = ExtResource("1_tx6q8")
+action = ExtResource("2_1pw1y")
+input_mappings = Array[ExtResource("3_vu3n0")]([SubResource("Resource_luyoi"), SubResource("Resource_dr84e"), SubResource("Resource_pp32r"), SubResource("Resource_5swbv")])
+metadata/_guide_input_mappings_collapsed = false
+
+[resource]
+script = ExtResource("2_b74h3")
+display_name = ""
+mappings = Array[ExtResource("1_tx6q8")]([SubResource("Resource_1a4b8")])
