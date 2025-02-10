@@ -5,198 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1fd94940-0a5e-41e7-9438-eaf38a03a666" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.silver/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.silver/.idea/libraries/GdSdk_Master.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.silver/.idea/projectSettingsUpdater.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.silver/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Prefabs/player.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/Prefabs/player.tscn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addons/combat_colliders/example_resource/knockback_rsc.gd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/2d_axis_mapping/2d_axis_mapping.gd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/2d_axis_mapping/2d_axis_mapping.tscn" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/2d_axis_mapping/mapping_contexts/2d_axis_mapping.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/2d_axis_mapping/mapping_contexts/move.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/2d_axis_mapping/player.gd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/action_priority/action_priority.gd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/action_priority/action_priority.tscn" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/action_priority/dpad_spells/dpad_spells.gd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/action_priority/dpad_spells/dpad_spells.tscn" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/action_priority/icons/enchant-acid-3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/action_priority/icons/enchant-acid-3.png.import" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/action_priority/icons/enchant-blue-3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/action_priority/icons/enchant-blue-3.png.import" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/action_priority/icons/enchant-jade-3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/action_priority/icons/enchant-jade-3.png.import" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/action_priority/icons/enchant-red-3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/action_priority/icons/enchant-red-3.png.import" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/action_priority/icons/fireball-acid-3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/action_priority/icons/fireball-acid-3.png.import" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/action_priority/icons/fireball-sky-3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/action_priority/icons/fireball-sky-3.png.import" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/action_priority/icons/heal-royal-3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/action_priority/icons/heal-royal-3.png.import" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/action_priority/icons/protect-blue-2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/action_priority/icons/protect-blue-2.png.import" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/action_priority/mapping_contexts/action_priority.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/action_priority/mapping_contexts/actions/acid_bolt.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/action_priority/mapping_contexts/actions/acid_enchantment.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/action_priority/mapping_contexts/actions/fire_enchantment.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/action_priority/mapping_contexts/actions/heal.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/action_priority/mapping_contexts/actions/healing_enchantment.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/action_priority/mapping_contexts/actions/mana_bolt.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/action_priority/mapping_contexts/actions/mana_enchantment.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/action_priority/mapping_contexts/actions/shield.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/action_priority/mapping_contexts/actions/spell_toggle.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/action_priority/spell_indicator/spell_indicator.gd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/action_priority/spell_indicator/spell_indicator.tscn" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/combos/combos.gd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/combos/combos.tscn" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/combos/mapping_contexts/basic_actions/fire.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/combos/mapping_contexts/basic_actions/move_horizontal.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/combos/mapping_contexts/basic_actions/move_left.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/combos/mapping_contexts/basic_actions/move_right.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/combos/mapping_contexts/combo_actions/dash_left.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/combos/mapping_contexts/combo_actions/dash_right.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/combos/mapping_contexts/combo_actions/fireball_left.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/combos/mapping_contexts/combo_actions/fireball_right.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/combos/mapping_contexts/combos.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/combos/player.gd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/input_contexts/boat.gd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/input_contexts/boat.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/input_contexts/boat.svg.import" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/input_contexts/input_contexts.gd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/input_contexts/input_contexts.tscn" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/input_contexts/mapping_contexts/boat_actions/accelerate.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/input_contexts/mapping_contexts/boat_actions/leave.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/input_contexts/mapping_contexts/boat_actions/turn.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/input_contexts/mapping_contexts/boat_context.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/input_contexts/mapping_contexts/player_actions/move.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/input_contexts/mapping_contexts/player_actions/use.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/input_contexts/mapping_contexts/player_context.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/input_contexts/player.gd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/input_scheme_switching/input_scheme_switching.gd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/input_scheme_switching/input_scheme_switching.tscn" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/input_scheme_switching/mapping_contexts/actions/move.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/input_scheme_switching/mapping_contexts/actions/shoot.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/input_scheme_switching/mapping_contexts/actions/switch_to_joystick.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/input_scheme_switching/mapping_contexts/actions/switch_to_keyboard.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/input_scheme_switching/mapping_contexts/joystick_scheme.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/input_scheme_switching/mapping_contexts/keyboard_scheme.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/input_scheme_switching/player.gd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/mouse_position_2d/background.gd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/mouse_position_2d/background.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/mouse_position_2d/background.svg.import" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/mouse_position_2d/camera_2d.gd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/mouse_position_2d/godot_head.gd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/mouse_position_2d/godot_head.tscn" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/mouse_position_2d/mapping_contexts/actions/camera_movement.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/mouse_position_2d/mapping_contexts/actions/camera_zoom.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/mouse_position_2d/mapping_contexts/actions/cursor.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/mouse_position_2d/mapping_contexts/actions/spawn.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/mouse_position_2d/mapping_contexts/modifiers/zoom_sensitivity.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/mouse_position_2d/mapping_contexts/mouse_position.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/mouse_position_2d/mouse_position.gd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/mouse_position_2d/mouse_position.tscn" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/mouse_position_3d/camera_control.gd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/mouse_position_3d/mapping_context/actions/camera_move.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/mouse_position_3d/mapping_context/actions/camera_pitch.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/mouse_position_3d/mapping_context/actions/camera_toggle.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/mouse_position_3d/mapping_context/actions/camera_yaw.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/mouse_position_3d/mapping_context/actions/cursor_3d.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/mouse_position_3d/mapping_context/actions/select.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/mouse_position_3d/mapping_context/mouse_position_3d.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/mouse_position_3d/mou4D8E.tmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/mouse_position_3d/mouse_indicator.gd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/mouse_position_3d/mouse_position_3d.gd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/mouse_position_3d/mouse_position_3d.tscn" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/mouse_position_3d/player.gd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/quick_start/game.gd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/quick_start/mapping_contexts/actions/move.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/quick_start/mapping_contexts/actions/say_hi.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/quick_start/mapping_contexts/quickstart.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/quick_start/player.gd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/quick_start/quick_start.tscn" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/remapping/mapping_contexts/binding_controller.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/remapping/mapping_contexts/binding_keyboard.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/remapping/mapping_contexts/controller.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/remapping/mapping_contexts/controller_actions/next_tab.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/remapping/mapping_contexts/controller_actions/player_movement_stick_invert.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/remapping/mapping_contexts/controller_actions/previous_tab.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/remapping/mapping_contexts/controller_actions/switch_to_keyboard.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/remapping/mapping_contexts/controller_actions/ui_accept.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/remapping/mapping_contexts/keyboard.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/remapping/mapping_contexts/keyboard_actions/switch_to_controller.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/remapping/mapping_contexts/shared_actions/close_menu.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/remapping/mapping_contexts/shared_actions/fire.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/remapping/mapping_contexts/shared_actions/open_menu.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/remapping/mapping_contexts/shared_actions/player_movement_2d.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/remapping/player.gd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/remapping/remapping.gd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/remapping/remapping.tscn" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/remapping/ui/binding_row.gd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/remapping/ui/binding_row.tscn" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/remapping/ui/binding_section.gd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/remapping/ui/binding_section.tscn" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/remapping/ui/remapping_dialog.gd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/remapping/ui/remapping_dialog.tscn" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/remapping/utils.gd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/shared/fireball/fireball.gd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/shared/fireball/fireball.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/shared/fireball/fireball.svg.import" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/shared/fireball/fireball.tscn" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/shared/godot_logo.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/shared/godot_logo.svg.import" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/shared/instructions_label.gd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/shared/ui_theme.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/simple_input/mapping_contexts/move_down.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/simple_input/mapping_contexts/move_left.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/simple_input/mapping_contexts/move_right.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/simple_input/mapping_contexts/move_up.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/simple_input/mapping_contexts/simple_input.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/simple_input/player.gd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/simple_input/simple_input.gd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/simple_input/simple_input.tscn" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/tap_and_hold/mapping_contexts/jump.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/tap_and_hold/mapping_contexts/somersault.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/tap_and_hold/mapping_contexts/tap_and_hold.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/tap_and_hold/player.gd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/tap_and_hold/tap_and_hold.gd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/tap_and_hold/tap_and_hold.tscn" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/touch/background.gd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/touch/background.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/touch/background.svg.import" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/touch/camera_2d.gd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/touch/godot_head.gd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/touch/godot_head.tscn" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/touch/mapping_contexts/actions/camera_movement.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/touch/mapping_contexts/actions/camera_reset.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/touch/mapping_contexts/actions/camera_rotation.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/touch/mapping_contexts/actions/camera_zoom.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/touch/mapping_contexts/actions/spawn.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/touch/mapping_contexts/modifiers/zoom_sensitivity.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/touch/mapping_contexts/touch.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/touch/placement_indicator/placement_indicator.gd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/touch/placement_indicator/placement_indicator.tscn" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/touch/placement_indicator/radial_progress.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/touch/placement_indicator/radial_progress.png.import" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/touch/touch.gd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/touch/touch.tscn" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/two_joysticks/actions/player_one_move.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/two_joysticks/actions/player_two_move.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/two_joysticks/modifiers/joystick_deadzone.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/two_joysticks/player.gd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/two_joysticks/two_joysticks.gd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/two_joysticks/two_joysticks.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/two_joysticks/two_joysticks.tscn" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/virtual_cursor/mapping_contexts/actions/click.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/virtual_cursor/mapping_contexts/actions/cursor_2d.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/virtual_cursor/mapping_contexts/virtual_cursor.tres" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/virtual_cursor/pointable/pointable.gd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/virtual_cursor/pointable/pointable.tscn" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/virtual_cursor/pointer.gd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/virtual_cursor/pointer.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/virtual_cursor/pointer.svg.import" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/virtual_cursor/virtual_cursor.gd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guide_examples/virtual_cursor/virtual_cursor.tscn" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scripts/Game.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.silver/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.silver/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Player.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -228,7 +39,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.build.godotPlugin",
+    "settings.editor.selected.configurable": "preferences.sourceCode.C#",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -280,6 +91,9 @@
       <updated>1738954491853</updated>
       <workItem from="1738954493272" duration="335000" />
       <workItem from="1738956331636" duration="1566000" />
+      <workItem from="1739213137071" duration="1502000" />
+      <workItem from="1739215630670" duration="33000" />
+      <workItem from="1739221701666" duration="1398000" />
     </task>
     <servers />
   </component>
