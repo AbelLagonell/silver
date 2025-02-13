@@ -15,10 +15,6 @@ run/main_scene="res://Scenes/main_scene.tscn"
 config/features=PackedStringArray("4.3", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
-[autoload]
-
-GUIDE="*res://addons/guide/guide.gd"
-
 [dotnet]
 
 project/assembly_name="silver"
@@ -30,7 +26,7 @@ version_control/autoload_on_startup=true
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/combat_colliders/plugin.cfg", "res://addons/godot_conventions_cheat_sheet/plugin.cfg", "res://addons/guide/plugin.cfg")
+enabled=PackedStringArray("res://addons/combat_colliders/plugin.cfg", "res://addons/godot_conventions_cheat_sheet/plugin.cfg")
 
 [layer_names]
 

@@ -1,6 +1,5 @@
 [gd_scene load_steps=32 format=3 uid="uid://bh7vkiuh7dham"]
 
-[ext_resource type="Script" path="res://Scripts/Player.cs" id="1_4c7kd"]
 [ext_resource type="Texture2D" uid="uid://cqbxkd7f66kcs" path="res://Assets/2D-Pixel-Art-Character-Template/Walk/PlayerWalk 48x48.png" id="1_aaa54"]
 [ext_resource type="Texture2D" uid="uid://lwvhq60bw2xd" path="res://Assets/2D-Pixel-Art-Character-Template/Idle/Player Idle 48x48.png" id="2_fxd20"]
 [ext_resource type="Script" path="res://addons/combat_colliders/core/combat_collider.gd" id="4_dpxp4"]
@@ -8,6 +7,19 @@
 [ext_resource type="Texture2D" uid="uid://dtrvfw32326fy" path="res://Assets/2D-Pixel-Art-Character-Template/Punch Cross/Player Punch Cross 64x64.png" id="5_wytxg"]
 [ext_resource type="Script" path="res://addons/combat_colliders/core/hurtbox_manip.gd" id="6_hmapf"]
 [ext_resource type="Texture2D" uid="uid://bw6mu5h2wwein" path="res://Assets/2D-Pixel-Art-Character-Template/Punch Jab/Player Jab 48x48.png" id="7_kc4e1"]
+
+[sub_resource type="CSharpScript" id="CSharpScript_rixtx"]
+script/source = "using Godot;
+using System;
+
+public partial class Player : CharacterBody2D
+{
+
+	public override void _PhysicsProcess(double delta)
+	{
+	}
+}
+"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7rl3e"]
 
@@ -314,7 +326,7 @@ _data = {
 
 [node name="Player" type="CharacterBody2D"]
 motion_mode = 1
-script = ExtResource("1_4c7kd")
+script = SubResource("CSharpScript_rixtx")
 
 [node name="Idle" type="Sprite2D" parent="."]
 visible = false
@@ -461,13 +473,14 @@ colliders = {
 is_hitbox = true
 debug_color = Color(1, 0, 0, 0.2)
 suffix = "HI"
+set_visible = true
+set_disabled = true
 
 [node name="F0HI0" type="CollisionShape2D" parent="Cross/Hit"]
 visible = false
 position = Vector2(21, -1)
 rotation = 1.57079
 shape = SubResource("CapsuleShape2D_dja1a")
-disabled = true
 debug_color = Color(1, 0, 0, 0.2)
 script = ExtResource("5_0fehd")
 
@@ -476,7 +489,6 @@ visible = false
 position = Vector2(3, 2)
 rotation = 1.45886
 shape = SubResource("CapsuleShape2D_l33f7")
-disabled = true
 debug_color = Color(1, 0, 0, 0.2)
 script = ExtResource("5_0fehd")
 
@@ -485,7 +497,6 @@ visible = false
 position = Vector2(26, 4)
 rotation = 0.739848
 shape = SubResource("CapsuleShape2D_nulyb")
-disabled = true
 debug_color = Color(1, 0, 0, 0.2)
 script = ExtResource("5_0fehd")
 frame = 1

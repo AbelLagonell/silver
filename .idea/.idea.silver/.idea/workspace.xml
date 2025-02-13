@@ -5,9 +5,333 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1fd94940-0a5e-41e7-9438-eaf38a03a666" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Scripts/Game.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.silver/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.silver/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Player.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/mapping_contexts/2d_axis.tres" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/mapping_contexts/move.tres" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Prefabs/player.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/Prefabs/player.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Game.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Player.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/debugger/guide_debugger.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/debugger/guide_debugger.tscn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/editor/action_mapping_editor/action_mapping_editor.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/editor/action_mapping_editor/action_mapping_editor.tscn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/editor/action_slot/action_slot.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/editor/action_slot/action_slot.tscn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/editor/array_edit/array_edit.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/editor/array_edit/array_edit.tscn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/editor/array_edit/array_edit_item.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/editor/array_edit/array_edit_item.tscn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/editor/array_edit/dragger.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/editor/binding_dialog/binding_dialog.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/editor/binding_dialog/binding_dialog.tscn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/editor/class_scanner.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/editor/input_display/input_display.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/editor/input_display/input_display.tscn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/editor/input_mapping_editor/input_mapping_editor.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/editor/input_mapping_editor/input_mapping_editor.tscn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/editor/logo_editor_small.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/editor/logo_editor_small.svg.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/editor/mapping_context_editor/mapping_context_editor.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/editor/mapping_context_editor/mapping_context_editor.tscn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/editor/modifier_slot/modifier_slot.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/editor/modifier_slot/modifier_slot.tscn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/editor/trigger_slot/trigger_slot.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/editor/trigger_slot/trigger_slot.tscn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/editor/utils.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/guide.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/guide_action.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/guide_action.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/guide_action.svg.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/guide_action_mapping.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/guide_input_mapping.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/guide_input_tracker.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/guide_internal.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/guide_internal.svg.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/guide_mapping_context.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/guide_mapping_context.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/guide_mapping_context.svg.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/guide_reset.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/guide_set.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/inputs/guide_input.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/inputs/guide_input.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/inputs/guide_input.svg.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/inputs/guide_input_action.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/inputs/guide_input_any.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/inputs/guide_input_joy_axis_1d.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/inputs/guide_input_joy_axis_2d.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/inputs/guide_input_joy_base.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/inputs/guide_input_joy_button.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/inputs/guide_input_key.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/inputs/guide_input_mouse_axis_1d.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/inputs/guide_input_mouse_axis_2d.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/inputs/guide_input_mouse_button.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/inputs/guide_input_mouse_position.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/inputs/guide_input_touch_angle.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/inputs/guide_input_touch_axis_1d.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/inputs/guide_input_touch_axis_2d.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/inputs/guide_input_touch_axis_base.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/inputs/guide_input_touch_base.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/inputs/guide_input_touch_distance.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/inputs/guide_input_touch_position.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/inputs/guide_touch_state.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/modifiers/guide_modifier.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/modifiers/guide_modifier.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/modifiers/guide_modifier.svg.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/modifiers/guide_modifier_3d_coordinates.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/modifiers/guide_modifier_8_way_direction.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/modifiers/guide_modifier_canvas_coordinates.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/modifiers/guide_modifier_curve.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/modifiers/guide_modifier_deadzone.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/modifiers/guide_modifier_input_swizzle.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/modifiers/guide_modifier_map_range.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/modifiers/guide_modifier_negate.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/modifiers/guide_modifier_normalize.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/modifiers/guide_modifier_positive_negative.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/modifiers/guide_modifier_scale.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/modifiers/guide_modifier_virtual_cursor.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/modifiers/guide_modifier_window_relative.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/plugin.cfg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/plugin.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/remapping/guide_input_detector.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/remapping/guide_remapper.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/remapping/guide_remapping_config.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/triggers/guide_trigger.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/triggers/guide_trigger.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/triggers/guide_trigger.svg.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/triggers/guide_trigger_chorded_action.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/triggers/guide_trigger_combo.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/triggers/guide_trigger_combo_cancel_action.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/triggers/guide_trigger_combo_step.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/triggers/guide_trigger_down.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/triggers/guide_trigger_hold.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/triggers/guide_trigger_pressed.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/triggers/guide_trigger_pulse.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/triggers/guide_trigger_released.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/triggers/guide_trigger_stability.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/triggers/guide_trigger_tap.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/guide_icon_renderer.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/guide_input_formatter.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/guide_text_provider.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/icon_maker/icon_maker.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/icon_maker/icon_maker.tscn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/controller_renderer.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/controller_renderer.tscn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/playstation/icons/PS5_Circle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/playstation/icons/PS5_Circle.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/playstation/icons/PS5_Cross.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/playstation/icons/PS5_Cross.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/playstation/icons/PS5_Dpad.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/playstation/icons/PS5_Dpad.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/playstation/icons/PS5_Dpad_Down.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/playstation/icons/PS5_Dpad_Down.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/playstation/icons/PS5_Dpad_Left.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/playstation/icons/PS5_Dpad_Left.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/playstation/icons/PS5_Dpad_Right.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/playstation/icons/PS5_Dpad_Right.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/playstation/icons/PS5_Dpad_Up.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/playstation/icons/PS5_Dpad_Up.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/playstation/icons/PS5_L1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/playstation/icons/PS5_L1.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/playstation/icons/PS5_L2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/playstation/icons/PS5_L2.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/playstation/icons/PS5_Left_Stick.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/playstation/icons/PS5_Left_Stick.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/playstation/icons/PS5_Left_Stick_Click.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/playstation/icons/PS5_Left_Stick_Click.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/playstation/icons/PS5_Microphone.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/playstation/icons/PS5_Microphone.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/playstation/icons/PS5_Options.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/playstation/icons/PS5_Options.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/playstation/icons/PS5_Options_Alt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/playstation/icons/PS5_Options_Alt.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/playstation/icons/PS5_R1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/playstation/icons/PS5_R1.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/playstation/icons/PS5_R2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/playstation/icons/PS5_R2.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/playstation/icons/PS5_Right_Stick.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/playstation/icons/PS5_Right_Stick.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/playstation/icons/PS5_Right_Stick_Click.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/playstation/icons/PS5_Right_Stick_Click.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/playstation/icons/PS5_Share.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/playstation/icons/PS5_Share.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/playstation/icons/PS5_Share_Alt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/playstation/icons/PS5_Share_Alt.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/playstation/icons/PS5_Square.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/playstation/icons/PS5_Square.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/playstation/icons/PS5_Touch_Pad.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/playstation/icons/PS5_Touch_Pad.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/playstation/icons/PS5_Triangle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/playstation/icons/PS5_Triangle.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/playstation/playstation_controller_renderer.tscn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/switch/icons/Switch_A.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/switch/icons/Switch_A.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/switch/icons/Switch_B.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/switch/icons/Switch_B.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/switch/icons/Switch_Controller_Left.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/switch/icons/Switch_Controller_Left.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/switch/icons/Switch_Controller_Right.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/switch/icons/Switch_Controller_Right.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/switch/icons/Switch_Controllers.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/switch/icons/Switch_Controllers.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/switch/icons/Switch_Controllers_Separate.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/switch/icons/Switch_Controllers_Separate.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/switch/icons/Switch_Down.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/switch/icons/Switch_Down.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/switch/icons/Switch_Dpad.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/switch/icons/Switch_Dpad.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/switch/icons/Switch_Dpad_Down.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/switch/icons/Switch_Dpad_Down.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/switch/icons/Switch_Dpad_Left.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/switch/icons/Switch_Dpad_Left.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/switch/icons/Switch_Dpad_Right.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/switch/icons/Switch_Dpad_Right.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/switch/icons/Switch_Dpad_Up.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/switch/icons/Switch_Dpad_Up.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/switch/icons/Switch_Home.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/switch/icons/Switch_Home.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/switch/icons/Switch_LB.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/switch/icons/Switch_LB.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/switch/icons/Switch_LT.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/switch/icons/Switch_LT.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/switch/icons/Switch_Left.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/switch/icons/Switch_Left.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/switch/icons/Switch_Left_Stick.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/switch/icons/Switch_Left_Stick.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/switch/icons/Switch_Left_Stick_Click.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/switch/icons/Switch_Left_Stick_Click.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/switch/icons/Switch_Minus.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/switch/icons/Switch_Minus.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/switch/icons/Switch_Plus.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/switch/icons/Switch_Plus.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/switch/icons/Switch_RB.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/switch/icons/Switch_RB.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/switch/icons/Switch_RT.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/switch/icons/Switch_RT.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/switch/icons/Switch_Right.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/switch/icons/Switch_Right.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/switch/icons/Switch_Right_Stick.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/switch/icons/Switch_Right_Stick.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/switch/icons/Switch_Right_Stick_Click.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/switch/icons/Switch_Right_Stick_Click.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/switch/icons/Switch_Square.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/switch/icons/Switch_Square.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/switch/icons/Switch_Up.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/switch/icons/Switch_Up.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/switch/icons/Switch_X.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/switch/icons/Switch_X.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/switch/icons/Switch_Y.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/switch/icons/Switch_Y.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/switch/switch_controller_renderer.tscn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/xbox/icons/XboxSeriesX_A.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/xbox/icons/XboxSeriesX_A.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/xbox/icons/XboxSeriesX_B.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/xbox/icons/XboxSeriesX_B.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/xbox/icons/XboxSeriesX_Dpad.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/xbox/icons/XboxSeriesX_Dpad.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/xbox/icons/XboxSeriesX_Dpad_Down.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/xbox/icons/XboxSeriesX_Dpad_Down.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/xbox/icons/XboxSeriesX_Dpad_Left.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/xbox/icons/XboxSeriesX_Dpad_Left.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/xbox/icons/XboxSeriesX_Dpad_Right.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/xbox/icons/XboxSeriesX_Dpad_Right.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/xbox/icons/XboxSeriesX_Dpad_Up.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/xbox/icons/XboxSeriesX_Dpad_Up.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/xbox/icons/XboxSeriesX_LB.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/xbox/icons/XboxSeriesX_LB.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/xbox/icons/XboxSeriesX_LT.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/xbox/icons/XboxSeriesX_LT.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/xbox/icons/XboxSeriesX_Left_Stick.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/xbox/icons/XboxSeriesX_Left_Stick.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/xbox/icons/XboxSeriesX_Left_Stick_Click.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/xbox/icons/XboxSeriesX_Left_Stick_Click.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/xbox/icons/XboxSeriesX_Menu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/xbox/icons/XboxSeriesX_Menu.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/xbox/icons/XboxSeriesX_RB.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/xbox/icons/XboxSeriesX_RB.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/xbox/icons/XboxSeriesX_RT.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/xbox/icons/XboxSeriesX_RT.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/xbox/icons/XboxSeriesX_Right_Stick.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/xbox/icons/XboxSeriesX_Right_Stick.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/xbox/icons/XboxSeriesX_Right_Stick_Click.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/xbox/icons/XboxSeriesX_Right_Stick_Click.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/xbox/icons/XboxSeriesX_Share.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/xbox/icons/XboxSeriesX_Share.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/xbox/icons/XboxSeriesX_View.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/xbox/icons/XboxSeriesX_View.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/xbox/icons/XboxSeriesX_X.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/xbox/icons/XboxSeriesX_X.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/xbox/icons/XboxSeriesX_Y.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/xbox/icons/XboxSeriesX_Y.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/controllers/xbox/xbox_controller_renderer.tscn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/joy/icons/button_empty.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/joy/icons/button_empty.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/joy/icons/stick_empty.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/joy/icons/stick_empty.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/joy/joy_renderer.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/joy/joy_renderer.tscn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/keyboard/Lato-Black.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/keyboard/Lato-Black.ttf.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/keyboard/icons/Blank_White_Normal.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/keyboard/icons/Blank_White_Normal.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/keyboard/key_renderer.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/keyboard/key_renderer.tscn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/misc/action_renderer.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/misc/action_renderer.tscn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/misc/fallback_renderer.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/misc/fallback_renderer.tscn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/mouse/icons/Mouse_Cursor.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/mouse/icons/Mouse_Cursor.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/mouse/icons/Mouse_Left_Key_Light.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/mouse/icons/Mouse_Left_Key_Light.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/mouse/icons/Mouse_Middle_Key_Light.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/mouse/icons/Mouse_Middle_Key_Light.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/mouse/icons/Mouse_Right_Key_Light.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/mouse/icons/Mouse_Right_Key_Light.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/mouse/icons/Mouse_Side_Key_1_Light.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/mouse/icons/Mouse_Side_Key_1_Light.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/mouse/icons/Mouse_Side_Key_2_Light.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/mouse/icons/Mouse_Side_Key_2_Light.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/mouse/icons/Mouse_Simple_Key_Light.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/mouse/icons/Mouse_Simple_Key_Light.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/mouse/mouse_renderer.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/mouse/mouse_renderer.tscn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/textures/action.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/textures/action.svg.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/textures/arrow_all_directions.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/textures/arrow_all_directions.svg.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/textures/arrow_down.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/textures/arrow_down.svg.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/textures/arrow_horizontal.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/textures/arrow_horizontal.svg.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/textures/arrow_left.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/textures/arrow_left.svg.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/textures/arrow_right.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/textures/arrow_right.svg.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/textures/arrow_up.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/textures/arrow_up.svg.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/textures/arrow_vertical.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/textures/arrow_vertical.svg.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/touch/icons/touch_1_finger.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/touch/icons/touch_1_finger.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/touch/icons/touch_2_fingers.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/touch/icons/touch_2_fingers.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/touch/icons/touch_3_fingers.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/touch/icons/touch_3_fingers.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/touch/icons/touch_4_fingers.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/touch/icons/touch_4_fingers.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/touch/icons/touch_rotate.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/touch/icons/touch_rotate.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/touch/icons/touch_zoom.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/touch/icons/touch_zoom.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/touch/touch_renderer.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/renderers/touch/touch_renderer.tscn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/text_providers/controllers/controller_text_provider.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/text_providers/controllers/playstation/playstation_controller_text_provider.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/text_providers/controllers/switch/switch_controller_text_provider.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/text_providers/controllers/xbox/xbox_controller_text_provider.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/guide/ui/text_providers/default_text_provider.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project.godot" beforeDir="false" afterPath="$PROJECT_DIR$/project.godot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/silver.sln.DotSettings" beforeDir="false" afterPath="$PROJECT_DIR$/silver.sln.DotSettings" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,6 +341,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 4
@@ -26,23 +351,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    ".NET Executable.Player.executor": "Debug",
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.sourceCode.C#",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;.NET Executable.Player.executor&quot;: &quot;Debug&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.C#&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected=".NET Executable.Player">
     <configuration name="Player GDScript" type="GDSCRIPT_DEBUG_RUN_CONFIGURATION" factoryName="GdScriptRunFactory" show_console_on_std_err="false" show_console_on_std_out="false" port="6006">
       <option name="address" value="127.0.0.1" />
@@ -93,16 +418,29 @@
       <workItem from="1738956331636" duration="1566000" />
       <workItem from="1739213137071" duration="1502000" />
       <workItem from="1739215630670" duration="33000" />
-      <workItem from="1739221701666" duration="1398000" />
+      <workItem from="1739221701666" duration="1503000" />
+      <workItem from="1739463155565" duration="320000" />
     </task>
+    <task id="LOCAL-00001" summary="Started CS work">
+      <option name="closed" value="true" />
+      <created>1739223189567</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1739223189567</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="Started CS work" />
+    <option name="LAST_COMMIT_MESSAGE" value="Started CS work" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
