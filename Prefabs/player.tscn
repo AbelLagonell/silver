@@ -1,25 +1,17 @@
-[gd_scene load_steps=32 format=3 uid="uid://bh7vkiuh7dham"]
+[gd_scene load_steps=31 format=3 uid="uid://bh7vkiuh7dham"]
 
-[ext_resource type="Texture2D" uid="uid://cqbxkd7f66kcs" path="res://Assets/2D-Pixel-Art-Character-Template/Walk/PlayerWalk 48x48.png" id="1_aaa54"]
-[ext_resource type="Texture2D" uid="uid://lwvhq60bw2xd" path="res://Assets/2D-Pixel-Art-Character-Template/Idle/Player Idle 48x48.png" id="2_fxd20"]
+[ext_resource type="Script" path="res://Scripts/Player.cs" id="1_4c7kd"]
+[ext_resource type="Texture2D" uid="uid://cqbxkd7f66kcs" path="res://Assets/CurrentArt/Walk/PlayerWalk 48x48.png" id="1_aaa54"]
+[ext_resource type="Texture2D" uid="uid://lwvhq60bw2xd" path="res://Assets/CurrentArt/Idle/Player Idle 48x48.png" id="2_fxd20"]
 [ext_resource type="Script" path="res://addons/combat_colliders/core/combat_collider.gd" id="4_dpxp4"]
 [ext_resource type="Script" path="res://addons/combat_colliders/core/hitbox_manip.gd" id="5_0fehd"]
-[ext_resource type="Texture2D" uid="uid://dtrvfw32326fy" path="res://Assets/2D-Pixel-Art-Character-Template/Punch Cross/Player Punch Cross 64x64.png" id="5_wytxg"]
+[ext_resource type="Texture2D" uid="uid://dtrvfw32326fy" path="res://Assets/CurrentArt/Punch Cross/Player Punch Cross 64x64.png" id="5_wytxg"]
 [ext_resource type="Script" path="res://addons/combat_colliders/core/hurtbox_manip.gd" id="6_hmapf"]
-[ext_resource type="Texture2D" uid="uid://bw6mu5h2wwein" path="res://Assets/2D-Pixel-Art-Character-Template/Punch Jab/Player Jab 48x48.png" id="7_kc4e1"]
-
-[sub_resource type="CSharpScript" id="CSharpScript_rixtx"]
-script/source = "using Godot;
-using System;
-
-public partial class Player : CharacterBody2D
-{
-
-	public override void _PhysicsProcess(double delta)
-	{
-	}
-}
-"
+[ext_resource type="Texture2D" uid="uid://bw6mu5h2wwein" path="res://Assets/CurrentArt/Punch Jab/Player Jab 48x48.png" id="7_kc4e1"]
+[ext_resource type="AnimationLibrary" uid="uid://b4gtshgp3ou1o" path="res://Assets/CurrentArt/Player.tres" id="9_7fagq"]
+[ext_resource type="Script" path="res://Scripts/Actions/Action.cs" id="10_4io78"]
+[ext_resource type="Script" path="res://Scripts/Actions/ActionHolder.cs" id="10_av7ph"]
+[ext_resource type="Animation" uid="uid://ddgctw63rktkv" path="res://Assets/CurrentArt/Idle/Idle.tres" id="12_64hbb"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7rl3e"]
 
@@ -66,7 +58,7 @@ radius = 7.6109
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wfjmw"]
 
-[sub_resource type="Animation" id="Animation_ecnn6"]
+[sub_resource type="Animation" id="Animation_71uqu"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -78,7 +70,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [9]
+"values": [7]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -90,12 +82,12 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [1]
+"values": [0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Cross:frame")
+tracks/2/path = NodePath("Jab:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -107,7 +99,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Jab:frame")
+tracks/3/path = NodePath("Cross:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -117,224 +109,22 @@ tracks/3/keys = {
 "values": [0]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_fia2p"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_aunlf"]
 _data = {
-"RESET": SubResource("Animation_ecnn6")
-}
-
-[sub_resource type="Animation" id="Animation_bicse"]
-resource_name = "Cross"
-length = 0.7
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Cross:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Cross/Hurt")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.3, 0.4, 0.5, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"values": [{
-"args": [],
-"method": &"start"
-}, {
-"args": [],
-"method": &"next_frame"
-}, {
-"args": [],
-"method": &"next_frame"
-}, {
-"args": [],
-"method": &"next_frame"
-}, {
-"args": [],
-"method": &"next_frame"
-}, {
-"args": [],
-"method": &"end"
-}]
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Cross/Hit")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1),
-"values": [{
-"args": [],
-"method": &"start"
-}, {
-"args": [],
-"method": &"next_frame"
-}, {
-"args": [],
-"method": &"end"
-}]
-}
-
-[sub_resource type="Animation" id="Animation_4docx"]
-loop_mode = 1
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Idle:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Idle/Hurt")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"values": [{
-"args": [],
-"method": &"start"
-}, {
-"args": [],
-"method": &"end"
-}]
-}
-
-[sub_resource type="Animation" id="Animation_1ij4d"]
-resource_name = "Jab"
-length = 0.8
-loop_mode = 1
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Jab:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Jab/Hurt")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.4, 0.6, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"values": [{
-"args": [],
-"method": &"start"
-}, {
-"args": [],
-"method": &"next_frame"
-}, {
-"args": [],
-"method": &"next_frame"
-}, {
-"args": [],
-"method": &"next_frame"
-}, {
-"args": [],
-"method": &"end"
-}]
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Jab/Hit")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.1, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"values": [{
-"args": [],
-"method": &"start"
-}, {
-"args": [],
-"method": &"end"
-}]
-}
-
-[sub_resource type="Animation" id="Animation_3yq18"]
-length = 0.7
-loop_mode = 1
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Walk:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Walk/Hurt")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.7),
-"transitions": PackedFloat32Array(1, 1),
-"values": [{
-"args": [],
-"method": &"start"
-}, {
-"args": [],
-"method": &"end"
-}]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_8iwc4"]
-_data = {
-"Cross": SubResource("Animation_bicse"),
-"Idle": SubResource("Animation_4docx"),
-"Jab": SubResource("Animation_1ij4d"),
-"Walk": SubResource("Animation_3yq18")
+"RESET": SubResource("Animation_71uqu")
 }
 
 [node name="Player" type="CharacterBody2D"]
 motion_mode = 1
-script = SubResource("CSharpScript_rixtx")
+script = ExtResource("1_4c7kd")
 
 [node name="Idle" type="Sprite2D" parent="."]
-visible = false
 texture = ExtResource("2_fxd20")
 hframes = 10
-frame = 9
+frame = 7
 
 [node name="Hurt" type="Area2D" parent="Idle"]
+visible = false
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("4_dpxp4")
@@ -357,9 +147,9 @@ script = ExtResource("6_hmapf")
 visible = false
 texture = ExtResource("1_aaa54")
 hframes = 8
-frame = 1
 
 [node name="Hurt" type="Area2D" parent="Walk"]
+visible = false
 position = Vector2(0, 1)
 collision_layer = 0
 collision_mask = 2
@@ -385,7 +175,6 @@ texture = ExtResource("7_kc4e1")
 hframes = 10
 
 [node name="Hurt" type="Area2D" parent="Jab"]
-visible = false
 position = Vector2(-3, 1)
 collision_layer = 0
 collision_mask = 2
@@ -454,10 +243,12 @@ debug_color = Color(1, 0, 0, 0.2)
 script = ExtResource("5_0fehd")
 
 [node name="Cross" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("5_wytxg")
 hframes = 7
 
 [node name="Hit" type="Area2D" parent="Cross"]
+visible = false
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("4_dpxp4")
@@ -473,14 +264,13 @@ colliders = {
 is_hitbox = true
 debug_color = Color(1, 0, 0, 0.2)
 suffix = "HI"
-set_visible = true
-set_disabled = true
 
 [node name="F0HI0" type="CollisionShape2D" parent="Cross/Hit"]
 visible = false
 position = Vector2(21, -1)
 rotation = 1.57079
 shape = SubResource("CapsuleShape2D_dja1a")
+disabled = true
 debug_color = Color(1, 0, 0, 0.2)
 script = ExtResource("5_0fehd")
 
@@ -489,6 +279,7 @@ visible = false
 position = Vector2(3, 2)
 rotation = 1.45886
 shape = SubResource("CapsuleShape2D_l33f7")
+disabled = true
 debug_color = Color(1, 0, 0, 0.2)
 script = ExtResource("5_0fehd")
 
@@ -497,11 +288,13 @@ visible = false
 position = Vector2(26, 4)
 rotation = 0.739848
 shape = SubResource("CapsuleShape2D_nulyb")
+disabled = true
 debug_color = Color(1, 0, 0, 0.2)
 script = ExtResource("5_0fehd")
 frame = 1
 
 [node name="Hurt" type="Area2D" parent="Cross"]
+visible = false
 position = Vector2(-3, 1)
 collision_layer = 0
 collision_mask = 2
@@ -587,9 +380,21 @@ frame = 5
 visible = false
 shape = SubResource("CapsuleShape2D_wfjmw")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="PlayerAnimations" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_fia2p"),
-"PlaceHolder_Player": SubResource("AnimationLibrary_8iwc4")
+"": SubResource("AnimationLibrary_aunlf"),
+"Player": ExtResource("9_7fagq")
 }
-autoplay = "PlaceHolder_Player/Cross"
+
+[node name="ActionHolder" type="Node2D" parent="." node_paths=PackedStringArray("_animationPlayer")]
+position = Vector2(-3, 0)
+script = ExtResource("10_av7ph")
+_animationPlayer = NodePath("../PlayerAnimations")
+AnimationLibrary = ExtResource("9_7fagq")
+_defaultAnimation = "Idle"
+
+[node name="Idle" type="Node2D" parent="ActionHolder" node_paths=PackedStringArray("Parent", "Sprite")]
+script = ExtResource("10_4io78")
+Parent = NodePath("..")
+Animation = ExtResource("12_64hbb")
+Sprite = NodePath("../../Idle")

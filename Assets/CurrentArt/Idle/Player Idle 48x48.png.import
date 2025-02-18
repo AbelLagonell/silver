@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cqbxkd7f66kcs"
-path="res://.godot/imported/PlayerWalk 48x48.png-01d8e20fa175a02e72b94cb35d800b08.ctex"
+uid="uid://lwvhq60bw2xd"
+path="res://.godot/imported/Player Idle 48x48.png-75ee341a281ffae5ed0c6cce73f76c34.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/2D-Pixel-Art-Character-Template/Walk/PlayerWalk 48x48.png"
-dest_files=["res://.godot/imported/PlayerWalk 48x48.png-01d8e20fa175a02e72b94cb35d800b08.ctex"]
+source_file="res://Assets/CurrentArt/Idle/Player Idle 48x48.png"
+dest_files=["res://.godot/imported/Player Idle 48x48.png-75ee341a281ffae5ed0c6cce73f76c34.ctex"]
 
 [params]
 
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

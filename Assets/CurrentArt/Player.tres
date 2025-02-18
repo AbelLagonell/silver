@@ -1,0 +1,14 @@
+[gd_resource type="AnimationLibrary" load_steps=5 format=3 uid="uid://b4gtshgp3ou1o"]
+
+[ext_resource type="Animation" uid="uid://dh1wi8nv2fotm" path="res://Assets/CurrentArt/Punch Cross/Cross.res" id="1_go0f5"]
+[ext_resource type="Animation" uid="uid://ddgctw63rktkv" path="res://Assets/CurrentArt/Idle/Idle.tres" id="2_amscd"]
+[ext_resource type="Animation" uid="uid://pdbv2kpxvqkd" path="res://Assets/CurrentArt/Punch Jab/Jab.res" id="3_ogtl1"]
+[ext_resource type="Animation" uid="uid://dcf1oklbyxb51" path="res://Assets/CurrentArt/Walk/Walk.tres" id="4_l0l0l"]
+
+[resource]
+_data = {
+"Cross": ExtResource("1_go0f5"),
+"Idle": ExtResource("2_amscd"),
+"Jab": ExtResource("3_ogtl1"),
+"Walk": ExtResource("4_l0l0l")
+}

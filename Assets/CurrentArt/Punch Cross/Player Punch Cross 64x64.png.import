@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://lwvhq60bw2xd"
-path="res://.godot/imported/Player Idle 48x48.png-aa3554f4bfdc1fffa7830efbfb601c90.ctex"
+uid="uid://dtrvfw32326fy"
+path="res://.godot/imported/Player Punch Cross 64x64.png-0f302f8fbb5a53acbfb14b0e1e6b3f5e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/2D-Pixel-Art-Character-Template/Idle/Player Idle 48x48.png"
-dest_files=["res://.godot/imported/Player Idle 48x48.png-aa3554f4bfdc1fffa7830efbfb601c90.ctex"]
+source_file="res://Assets/CurrentArt/Punch Cross/Player Punch Cross 64x64.png"
+dest_files=["res://.godot/imported/Player Punch Cross 64x64.png-0f302f8fbb5a53acbfb14b0e1e6b3f5e.ctex"]
 
 [params]
 
