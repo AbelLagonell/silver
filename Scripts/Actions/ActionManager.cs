@@ -11,6 +11,8 @@ public partial class ActionManager : Node2D {
     private AnimationPlayer _animationPlayer;
     private AnimationLibrary _library;
     private string _defaultAnimation;
+    public string[] InputList;
+
 
     private AnimationLibrary AnimationLibrary {
         get => _library;
@@ -41,9 +43,17 @@ public partial class ActionManager : Node2D {
     public override Array<Dictionary> _GetPropertyList() {
         Array<Dictionary> propList = new Array<Dictionary> {
             new() {
-                { "name", "Action Holder" },
+                { "name", "Action Manager" },
                 { "usage", Variant.From(PropertyUsageFlags.Category) },
                 { "type", Variant.From(Variant.Type.String) }
+            },
+
+            new() {
+                { "name", "InputList" },
+                { "usage", Variant.From(PropertyUsageFlags.Default) },
+                { "type", Variant.From(Variant.Type.Array) },
+                { "hint", Variant.From(PropertyHint.ArrayType) },
+                { "hint_string", "string" }
             },
 
             new() {

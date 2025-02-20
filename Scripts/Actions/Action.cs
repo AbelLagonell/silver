@@ -1,3 +1,4 @@
+using System.Linq;
 using Godot;
 using Godot.Collections;
 
@@ -65,7 +66,9 @@ public partial class Action : Node2D {
                 { "type", Variant.From(Variant.Type.Array) },
                 { "hint", Variant.From(PropertyHint.ArrayType) },
                 { "hint_string", $"{Variant.Type.Object:D}/{PropertyHint.ResourceType:D}:ActionResource" }
-            }
+            },
+
+            
         };
         return propList;
     }
