@@ -1,8 +1,39 @@
 <Project Sdk="Godot.NET.Sdk/4.3.0">
-  <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <TargetFramework Condition=" '$(GodotTargetPlatform)' == 'android' ">net7.0</TargetFramework>
-    <TargetFramework Condition=" '$(GodotTargetPlatform)' == 'ios' ">net8.0</TargetFramework>
-    <EnableDynamicLoading>true</EnableDynamicLoading>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <TargetFramework Condition=" '$(GodotTargetPlatform)' == 'android' ">net7.0</TargetFramework>
+        <TargetFramework Condition=" '$(GodotTargetPlatform)' == 'ios' ">net8.0</TargetFramework>
+        <EnableDynamicLoading>true</EnableDynamicLoading>
+    </PropertyGroup>
+    <ItemGroup>
+        <Compile Remove=".godot\**"/>
+    </ItemGroup>
+    <ItemGroup>
+        <EmbeddedResource Remove=".godot\**"/>
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="addons\combat_colliders\core\combat_collider.gd"/>
+        <Content Include="addons\combat_colliders\core\hitbox_manip.gd"/>
+        <Content Include="addons\combat_colliders\core\hurtbox_manip.gd"/>
+        <Content Include="addons\combat_colliders\example_resource\knockback_rsc.gd"/>
+        <Content Include="addons\combat_colliders\example_resource\ui_effect_rsc.gd"/>
+        <Content Include="addons\combat_colliders\plugin.cfg"/>
+        <Content Include="addons\combat_colliders\plugin.gd"/>
+        <Content Include="addons\combat_colliders\util\collider_inspector.gd"/>
+        <Content Include="addons\godot-git-plugin\git_plugin.gdextension"/>
+        <Content Include="addons\godot-git-plugin\LICENSE"/>
+        <Content Include="addons\godot-git-plugin\linux\libgit_plugin.linux.editor.x86_64.so"/>
+        <Content Include="addons\godot-git-plugin\macos\libgit_plugin.macos.editor.universal.dylib"/>
+        <Content Include="addons\godot-git-plugin\plugin.cfg"/>
+        <Content Include="addons\godot-git-plugin\THIRDPARTY.md"/>
+        <Content Include="addons\godot-git-plugin\win64\libgit_plugin.windows.editor.x86_64.dll"/>
+        <Content Include="addons\godot-git-plugin\win64\libgit_plugin.windows.editor.x86_64.exp"/>
+        <Content Include="addons\godot-git-plugin\win64\libgit_plugin.windows.editor.x86_64.lib"/>
+        <Content Include="addons\godot-git-plugin\win64\~libgit_plugin.windows.editor.x86_64.dll"/>
+        <Content Include="addons\godot_conventions_cheat_sheet\dock.tscn"/>
+        <Content Include="addons\godot_conventions_cheat_sheet\godot_conventions_cheat_sheet.gd"/>
+        <Content Include="addons\godot_conventions_cheat_sheet\plugin.cfg"/>
+        <Content Include="Prefabs\player.tscn"/>
+        <Content Include="Scenes\main_scene.tscn"/>
+    </ItemGroup>
 </Project>

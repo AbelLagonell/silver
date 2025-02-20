@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bh7vkiuh7dham"]
+[gd_scene load_steps=32 format=3 uid="uid://bh7vkiuh7dham"]
 
 [ext_resource type="Script" path="res://Scripts/Player.cs" id="1_4c7kd"]
 [ext_resource type="Texture2D" uid="uid://cqbxkd7f66kcs" path="res://Assets/CurrentArt/Walk/PlayerWalk 48x48.png" id="1_aaa54"]
@@ -10,8 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://bw6mu5h2wwein" path="res://Assets/CurrentArt/Punch Jab/Player Jab 48x48.png" id="7_kc4e1"]
 [ext_resource type="AnimationLibrary" uid="uid://b4gtshgp3ou1o" path="res://Assets/CurrentArt/Player.tres" id="9_7fagq"]
 [ext_resource type="Script" path="res://Scripts/Actions/Action.cs" id="10_4io78"]
-[ext_resource type="Script" path="res://Scripts/Actions/ActionHolder.cs" id="10_av7ph"]
+[ext_resource type="Script" path="res://Scripts/Actions/ActionManager.cs" id="10_ou7ol"]
 [ext_resource type="Animation" uid="uid://ddgctw63rktkv" path="res://Assets/CurrentArt/Idle/Idle.tres" id="12_64hbb"]
+[ext_resource type="Animation" uid="uid://dcf1oklbyxb51" path="res://Assets/CurrentArt/Walk/Walk.tres" id="13_vedpw"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7rl3e"]
 
@@ -388,13 +389,19 @@ libraries = {
 
 [node name="ActionHolder" type="Node2D" parent="." node_paths=PackedStringArray("_animationPlayer")]
 position = Vector2(-3, 0)
-script = ExtResource("10_av7ph")
+script = ExtResource("10_ou7ol")
 _animationPlayer = NodePath("../PlayerAnimations")
 AnimationLibrary = ExtResource("9_7fagq")
 _defaultAnimation = "Idle"
 
-[node name="Idle" type="Node2D" parent="ActionHolder" node_paths=PackedStringArray("Parent", "Sprite")]
+[node name="Idle" type="Node2D" parent="ActionHolder" node_paths=PackedStringArray("_sprite")]
 script = ExtResource("10_4io78")
-Parent = NodePath("..")
-Animation = ExtResource("12_64hbb")
-Sprite = NodePath("../../Idle")
+_animation = ExtResource("12_64hbb")
+_sprite = NodePath("../../Idle")
+_attributes = []
+
+[node name="Walking" type="Node2D" parent="ActionHolder" node_paths=PackedStringArray("_sprite")]
+script = ExtResource("10_4io78")
+_animation = ExtResource("13_vedpw")
+_sprite = NodePath("../../Walk")
+_attributes = []

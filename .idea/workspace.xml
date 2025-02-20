@@ -5,31 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="af224780-356b-47a1-8236-1a12fb52b207" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Scripts/Action.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Scripts/ActionHolder.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Scripts/Movement.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Scripts/Util.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.silver/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.silver/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2D-Pixel-Art-Character-Template/Idle/Player Idle 48x48.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2D-Pixel-Art-Character-Template/Idle/Player Idle 48x48.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2D-Pixel-Art-Character-Template/Idle/Player Idle 48x48.png.import" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2D-Pixel-Art-Character-Template/Punch Cross/Player Punch Cross 64x64.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2D-Pixel-Art-Character-Template/Punch Cross/Player Punch Cross 64x64.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2D-Pixel-Art-Character-Template/Punch Cross/Player Punch Cross 64x64.png.import" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2D-Pixel-Art-Character-Template/Punch Jab/Player Jab 48x48.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2D-Pixel-Art-Character-Template/Punch Jab/Player Jab 48x48.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2D-Pixel-Art-Character-Template/Punch Jab/Player Jab 48x48.png.import" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2D-Pixel-Art-Character-Template/Run/player run 48x48.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2D-Pixel-Art-Character-Template/Run/player run 48x48.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2D-Pixel-Art-Character-Template/Run/player run 48x48.png.import" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2D-Pixel-Art-Character-Template/Walk/PlayerWalk 48x48.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2D-Pixel-Art-Character-Template/Walk/PlayerWalk 48x48.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2D-Pixel-Art-Character-Template/Walk/PlayerWalk 48x48.png.import" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Prefabs/player.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/Prefabs/player.tscn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Player.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addons/knockback_rsc.gd" beforeDir="false" afterPath="$PROJECT_DIR$/addons/combat_colliders/example_resource/knockback_rsc.gd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project.godot" beforeDir="false" afterPath="$PROJECT_DIR$/project.godot" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,7 +17,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Scripts/Action.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Scripts/Actions/Action.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Scripts/Player.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
@@ -51,24 +28,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;GdScript Start and Debug.Player GDScript.executor&quot;: &quot;Debug&quot;,
-    &quot;Native Executable.Editor.executor&quot;: &quot;Debug&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;gdscript.promo.shown&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.build.godotPlugin&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    ".NET Executable.Player.executor": "Run",
+    "Attach to Process.97480:Godot_v4.3-stable_mono_linux.x86_64.executor": "Debug",
+    "GdScript Start and Debug.Player GDScript.executor": "Debug",
+    "Native Executable.Editor.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "XThreadsFramesViewSplitterKey": "0.2416185",
+    "gdscript.promo.shown": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/home/alago/Documents/silver",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "advanced.settings",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
-  <component name="RunManager" selected="GdScript Start and Debug.Player GDScript">
+}]]></component>
+  <component name="RunManager" selected=".NET Executable.Player">
     <configuration name="Player GDScript" type="GDSCRIPT_DEBUG_RUN_CONFIGURATION" factoryName="GdScriptRunFactory" show_console_on_std_err="false" show_console_on_std_out="false" port="6006">
       <option name="address" value="127.0.0.1" />
       <option name="allowRunningInParallel" value="false" />
@@ -79,6 +60,19 @@
       </option>
       <method v="2" />
     </configuration>
+    <configuration name="Player" type="RunExe" factoryName=".NET Executable">
+      <option name="EXE_PATH" value="$USER_HOME$/Downloads/Godot_v4.3-stable_mono_linux_x86_64/Godot_v4.3-stable_mono_linux.x86_64" />
+      <option name="PROGRAM_PARAMETERS" value="--path &quot;./&quot;" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="RUNTIME_TYPE" value="coreclr" />
+      <method v="2">
+        <option name="Build Solution" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Editor" type="RunNativeExe" factoryName="Native Executable">
       <option name="EXE_PATH" value="$USER_HOME$/Downloads/Godot_v4.3-stable_mono_linux_x86_64/Godot_v4.3-stable_mono_linux.x86_64" />
       <option name="PROGRAM_PARAMETERS" value="--path &quot;./&quot; --editor" />
@@ -87,6 +81,11 @@
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue=".NET Executable.Player" />
+      <item itemvalue="GdScript Start and Debug.Player GDScript" />
+      <item itemvalue="Native Executable.Editor" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -99,6 +98,9 @@
       <workItem from="1738954947334" duration="19000" />
       <workItem from="1738955048554" duration="1281000" />
       <workItem from="1739910283828" duration="2607000" />
+      <workItem from="1739981174058" duration="280000" />
+      <workItem from="1739981470080" duration="16000" />
+      <workItem from="1739981699635" duration="787000" />
     </task>
     <servers />
   </component>
@@ -108,5 +110,9 @@
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

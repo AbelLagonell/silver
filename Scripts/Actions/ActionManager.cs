@@ -1,10 +1,15 @@
+using System.Collections.Generic;
+using System.Linq;
+using System.Numerics;
 using Godot;
 using Godot.Collections;
 
+namespace silver.Scripts.Actions;
+
 [GlobalClass, Tool]
-public partial class ActionHolder : Node2D {
+public partial class ActionManager : Node2D {
     private AnimationPlayer _animationPlayer;
-    private AnimationLibrary _library = null;
+    private AnimationLibrary _library;
     private string _defaultAnimation;
 
     private AnimationLibrary AnimationLibrary {
@@ -20,25 +25,36 @@ public partial class ActionHolder : Node2D {
         _animationPlayer.Play($"{_library.GetName()}/{_defaultAnimation}");
     }
 
-    public void PlayAnimation(Animation anim) {
-        _animationPlayer.Play($"{_library.GetName()}/{anim.GetName()}");
+    public ActionResource[] UseAction(string action) {
+        var nodes = GetChildren();
+        foreach (Node node in nodes) {
+            if (node is Action actionNode) {
+                if (actionNode.GetName() == action) return actionNode.getAttributes();
+            }
+        }
+
+        GD.PushError($"Action {action} not found");
+        return null;
     }
+
 
     public override Array<Dictionary> _GetPropertyList() {
         Array<Dictionary> propList = new Array<Dictionary> {
-            new Dictionary() {
+            new() {
                 { "name", "Action Holder" },
                 { "usage", Variant.From(PropertyUsageFlags.Category) },
                 { "type", Variant.From(Variant.Type.String) }
             },
-            new Dictionary() {
+
+            new() {
                 { "name", "_animationPlayer" },
                 { "usage", Variant.From(PropertyUsageFlags.Default) },
                 { "type", Variant.From(Variant.Type.Object) },
                 { "hint", Variant.From(PropertyHint.NodeType) },
                 { "hint_string", "AnimationPlayer" }
             },
-            new Dictionary() {
+
+            new() {
                 { "name", "AnimationLibrary" },
                 { "usage", Variant.From(PropertyUsageFlags.Default) },
                 { "type", Variant.From(Variant.Type.Object) },
@@ -53,7 +69,7 @@ public partial class ActionHolder : Node2D {
             propList.Add(new Dictionary() {
                 { "name", "_defaultAnimation" },
                 { "usage", Variant.From(PropertyUsageFlags.Default) },
-                { "type", Variant.From(Variant.Type.String) }, // Changed to String since we're storing animation name
+                { "type", Variant.From(Variant.Type.String) },
                 { "hint", Variant.From(PropertyHint.Enum) },
                 { "hint_string", animationList }
             });

@@ -5,31 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1fd94940-0a5e-41e7-9438-eaf38a03a666" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Scripts/Action.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Scripts/ActionHolder.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Scripts/Movement.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Scripts/Util.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scripts/Actions/ActionResource.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.silver/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.silver/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2D-Pixel-Art-Character-Template/Idle/Player Idle 48x48.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2D-Pixel-Art-Character-Template/Idle/Player Idle 48x48.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2D-Pixel-Art-Character-Template/Idle/Player Idle 48x48.png.import" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2D-Pixel-Art-Character-Template/Punch Cross/Player Punch Cross 64x64.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2D-Pixel-Art-Character-Template/Punch Cross/Player Punch Cross 64x64.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2D-Pixel-Art-Character-Template/Punch Cross/Player Punch Cross 64x64.png.import" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2D-Pixel-Art-Character-Template/Punch Jab/Player Jab 48x48.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2D-Pixel-Art-Character-Template/Punch Jab/Player Jab 48x48.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2D-Pixel-Art-Character-Template/Punch Jab/Player Jab 48x48.png.import" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2D-Pixel-Art-Character-Template/Run/player run 48x48.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2D-Pixel-Art-Character-Template/Run/player run 48x48.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2D-Pixel-Art-Character-Template/Run/player run 48x48.png.import" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2D-Pixel-Art-Character-Template/Walk/PlayerWalk 48x48.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2D-Pixel-Art-Character-Template/Walk/PlayerWalk 48x48.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2D-Pixel-Art-Character-Template/Walk/PlayerWalk 48x48.png.import" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Prefabs/player.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/Prefabs/player.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Actions/Action.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Actions/Action.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Actions/ActionHolder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Actions/ActionManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Actions/Movement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Actions/Movement.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Scripts/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Player.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addons/knockback_rsc.gd" beforeDir="false" afterPath="$PROJECT_DIR$/addons/combat_colliders/example_resource/knockback_rsc.gd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project.godot" beforeDir="false" afterPath="$PROJECT_DIR$/project.godot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Util.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Util.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/silver.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/silver.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,6 +26,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Scripts/Actions/ActionManager.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
@@ -68,7 +56,7 @@
     "nodejs_package_manager_path": "npm",
     "rider.code.cleanup.on.save": "true",
     "rider.code.cleanup.on.save.profile": "Built-in: Reformat Code",
-    "settings.editor.selected.configurable": "actions.on.save",
+    "settings.editor.selected.configurable": "com.maddyhome.idea.vim.ui.VimEmulationConfigurable",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -127,7 +115,11 @@
       <workItem from="1739463843418" duration="1326000" />
       <workItem from="1739818857714" duration="3461000" />
       <workItem from="1739893554007" duration="16038000" />
-      <workItem from="1739911315030" duration="2849000" />
+      <workItem from="1739911315030" duration="4573000" />
+      <workItem from="1739981206464" duration="252000" />
+      <workItem from="1739981544917" duration="3000" />
+      <workItem from="1739981560878" duration="123000" />
+      <workItem from="1739982157019" duration="13568000" />
     </task>
     <task id="LOCAL-00001" summary="Started CS work">
       <option name="closed" value="true" />
@@ -137,7 +129,15 @@
       <option name="project" value="LOCAL" />
       <updated>1739223189567</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Started work on the Action system">
+      <option name="closed" value="true" />
+      <created>1739915880145</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1739915880145</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -148,7 +148,8 @@
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="Started CS work" />
-    <option name="LAST_COMMIT_MESSAGE" value="Started CS work" />
+    <MESSAGE value="Started work on the Action system" />
+    <option name="LAST_COMMIT_MESSAGE" value="Started work on the Action system" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
