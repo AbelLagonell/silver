@@ -6,6 +6,7 @@
 [ext_resource type="Animation" uid="uid://dcf1oklbyxb51" path="res://Assets/CurrentArt/Walk/Walk.tres" id="4_l0l0l"]
 
 [resource]
+resource_name = "Player"
 _data = {
 "Cross": ExtResource("1_go0f5"),
 "Idle": ExtResource("2_amscd"),

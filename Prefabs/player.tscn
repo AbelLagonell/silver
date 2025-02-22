@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://bh7vkiuh7dham"]
+[gd_scene load_steps=31 format=3 uid="uid://bh7vkiuh7dham"]
 
 [ext_resource type="Script" path="res://Scripts/Player.cs" id="1_4c7kd"]
 [ext_resource type="Texture2D" uid="uid://cqbxkd7f66kcs" path="res://Assets/CurrentArt/Walk/PlayerWalk 48x48.png" id="1_aaa54"]
@@ -9,11 +9,9 @@
 [ext_resource type="Script" path="res://addons/combat_colliders/core/hurtbox_manip.gd" id="6_hmapf"]
 [ext_resource type="Texture2D" uid="uid://bw6mu5h2wwein" path="res://Assets/CurrentArt/Punch Jab/Player Jab 48x48.png" id="7_kc4e1"]
 [ext_resource type="AnimationLibrary" uid="uid://b4gtshgp3ou1o" path="res://Assets/CurrentArt/Player.tres" id="9_7fagq"]
-[ext_resource type="Script" path="res://Scripts/Actions/Action.cs" id="10_4io78"]
 [ext_resource type="Script" path="res://Scripts/Actions/ActionManager.cs" id="10_ou7ol"]
-[ext_resource type="Animation" uid="uid://ddgctw63rktkv" path="res://Assets/CurrentArt/Idle/Idle.tres" id="12_64hbb"]
-[ext_resource type="Animation" uid="uid://dcf1oklbyxb51" path="res://Assets/CurrentArt/Walk/Walk.tres" id="13_vedpw"]
-[ext_resource type="Script" path="res://Scripts/Actions/Movement.cs" id="14_rxf18"]
+[ext_resource type="Script" path="res://Scripts/Actions/Action.cs" id="11_d7rkm"]
+[ext_resource type="Animation" uid="uid://ddgctw63rktkv" path="res://Assets/CurrentArt/Idle/Idle.tres" id="12_isap5"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7rl3e"]
 
@@ -115,11 +113,6 @@ tracks/3/keys = {
 _data = {
 "RESET": SubResource("Animation_71uqu")
 }
-
-[sub_resource type="Resource" id="Resource_5lg36"]
-script = ExtResource("14_rxf18")
-_speed = Vector2(5, 5)
-Attributes = {}
 
 [node name="Player" type="CharacterBody2D"]
 motion_mode = 1
@@ -394,7 +387,6 @@ libraries = {
 }
 
 [node name="ActionHolder" type="Node2D" parent="." node_paths=PackedStringArray("_animationPlayer")]
-position = Vector2(-3, 0)
 script = ExtResource("10_ou7ol")
 InputList = PackedStringArray("mv_up", "mv_down", "mv_right", "mv_left")
 _animationPlayer = NodePath("../PlayerAnimations")
@@ -402,15 +394,10 @@ AnimationLibrary = ExtResource("9_7fagq")
 _defaultAnimation = "Idle"
 
 [node name="Idle" type="Node2D" parent="ActionHolder" node_paths=PackedStringArray("_sprite")]
-script = ExtResource("10_4io78")
-_animation = ExtResource("12_64hbb")
+script = ExtResource("11_d7rkm")
+Animation = ExtResource("12_isap5")
 _sprite = NodePath("../../Idle")
-_attributes = []
-_inputString = null
+Inputs = PackedStringArray()
 
-[node name="Walking" type="Node2D" parent="ActionHolder" node_paths=PackedStringArray("_sprite")]
-script = ExtResource("10_4io78")
-_animation = ExtResource("13_vedpw")
-_sprite = NodePath("../../Walk")
-_attributes = [SubResource("Resource_5lg36")]
-_inputString = null
+[node name="Walk" type="Node2D" parent="ActionHolder"]
+script = ExtResource("11_d7rkm")

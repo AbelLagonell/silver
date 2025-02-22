@@ -27,21 +27,9 @@ public partial class ActionManager : Node2D {
         _animationPlayer.Play($"{_library.GetName()}/{_defaultAnimation}");
     }
 
-    public ActionResource[] UseAction(string action) {
-        var nodes = GetChildren();
-        foreach (Node node in nodes) {
-            if (node is Action actionNode) {
-                if (actionNode.GetName() == action) return actionNode.getAttributes();
-            }
-        }
-
-        GD.PushError($"Action {action} not found");
-        return null;
-    }
-
 
     public override Array<Dictionary> _GetPropertyList() {
-        Array<Dictionary> propList = new Array<Dictionary> {
+        var propList = new Array<Dictionary> {
             new() {
                 { "name", "Action Manager" },
                 { "usage", Variant.From(PropertyUsageFlags.Category) },

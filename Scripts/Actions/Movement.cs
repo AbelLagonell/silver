@@ -3,13 +3,7 @@ using Godot;
 namespace silver.Scripts.Actions;
 
 [GlobalClass, Tool]
-public partial class Movement : ActionResource {
-    protected Vector2 Speed;
-
-    protected override void PopulateDictionary() {
-        RegisterProperty("Speed", Speed);
-    }
-
+public partial class Movement : ActionComponent {
     /*
      *new() {
                 { "name", "_inputString" },
