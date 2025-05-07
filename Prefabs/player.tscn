@@ -1,17 +1,13 @@
-[gd_scene load_steps=31 format=3 uid="uid://bh7vkiuh7dham"]
+[gd_scene load_steps=27 format=3 uid="uid://bh7vkiuh7dham"]
 
-[ext_resource type="Script" path="res://Scripts/Player.cs" id="1_4c7kd"]
 [ext_resource type="Texture2D" uid="uid://cqbxkd7f66kcs" path="res://Assets/CurrentArt/Walk/PlayerWalk 48x48.png" id="1_aaa54"]
 [ext_resource type="Texture2D" uid="uid://lwvhq60bw2xd" path="res://Assets/CurrentArt/Idle/Player Idle 48x48.png" id="2_fxd20"]
-[ext_resource type="Script" path="res://addons/combat_colliders/core/combat_collider.gd" id="4_dpxp4"]
-[ext_resource type="Script" path="res://addons/combat_colliders/core/hitbox_manip.gd" id="5_0fehd"]
+[ext_resource type="Script" uid="uid://bosfvou53lsp3" path="res://addons/combat_colliders/core/combat_collider.gd" id="4_dpxp4"]
+[ext_resource type="Script" uid="uid://x8cfbjydyese" path="res://addons/combat_colliders/core/hitbox_manip.gd" id="5_0fehd"]
 [ext_resource type="Texture2D" uid="uid://dtrvfw32326fy" path="res://Assets/CurrentArt/Punch Cross/Player Punch Cross 64x64.png" id="5_wytxg"]
-[ext_resource type="Script" path="res://addons/combat_colliders/core/hurtbox_manip.gd" id="6_hmapf"]
+[ext_resource type="Script" uid="uid://bia1d68dyoxnu" path="res://addons/combat_colliders/core/hurtbox_manip.gd" id="6_hmapf"]
 [ext_resource type="Texture2D" uid="uid://bw6mu5h2wwein" path="res://Assets/CurrentArt/Punch Jab/Player Jab 48x48.png" id="7_kc4e1"]
 [ext_resource type="AnimationLibrary" uid="uid://b4gtshgp3ou1o" path="res://Assets/CurrentArt/Player.tres" id="9_7fagq"]
-[ext_resource type="Script" path="res://Scripts/Actions/ActionManager.cs" id="10_ou7ol"]
-[ext_resource type="Script" path="res://Scripts/Actions/Action.cs" id="11_d7rkm"]
-[ext_resource type="Animation" uid="uid://ddgctw63rktkv" path="res://Assets/CurrentArt/Idle/Idle.tres" id="12_isap5"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7rl3e"]
 
@@ -111,12 +107,11 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_aunlf"]
 _data = {
-"RESET": SubResource("Animation_71uqu")
+&"RESET": SubResource("Animation_71uqu")
 }
 
 [node name="Player" type="CharacterBody2D"]
 motion_mode = 1
-script = ExtResource("1_4c7kd")
 
 [node name="Idle" type="Sprite2D" parent="."]
 texture = ExtResource("2_fxd20")
@@ -382,22 +377,6 @@ shape = SubResource("CapsuleShape2D_wfjmw")
 
 [node name="PlayerAnimations" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_aunlf"),
-"Player": ExtResource("9_7fagq")
+&"": SubResource("AnimationLibrary_aunlf"),
+&"Player": ExtResource("9_7fagq")
 }
-
-[node name="ActionHolder" type="Node2D" parent="." node_paths=PackedStringArray("_animationPlayer")]
-script = ExtResource("10_ou7ol")
-InputList = PackedStringArray("mv_up", "mv_down", "mv_right", "mv_left")
-_animationPlayer = NodePath("../PlayerAnimations")
-AnimationLibrary = ExtResource("9_7fagq")
-_defaultAnimation = "Idle"
-
-[node name="Idle" type="Node2D" parent="ActionHolder" node_paths=PackedStringArray("_sprite")]
-script = ExtResource("11_d7rkm")
-Animation = ExtResource("12_isap5")
-_sprite = NodePath("../../Idle")
-Inputs = PackedStringArray()
-
-[node name="Walk" type="Node2D" parent="ActionHolder"]
-script = ExtResource("11_d7rkm")
