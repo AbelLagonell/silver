@@ -1,6 +1,8 @@
 using Godot;
 using Godot.Collections;
 
+
+[Tool]
 [GlobalClass]
 public partial class HurtboxSet : CombatCollider2D<HurtboxShape2D>
 {
@@ -18,5 +20,20 @@ public partial class HurtboxSet : CombatCollider2D<HurtboxShape2D>
     {
         SetCollisionLayerValue(PlayerHurtboxLayer, !IsEnemy);
         SetCollisionLayerValue(EnemyHurtboxLayer, IsEnemy);
+    }
+    
+    protected override void AddCollisionToFrame(int actingFrame)
+    {
+        base.AddCollisionToFrame(actingFrame);
+
+        // string shapeName = $"Frame {actingFrame} Hurtbox {frames[actingFrame].Shapes.Count}";
+        // Shape2D colliderShape = (Shape2D)System.Activator.CreateInstance(Shape2D.GetType());
+
+        // var hurtbox = frames[actingFrame].AddShape(colliderShape, shapeName, _debugColor);
+        
+        // AddChild(hurtbox);
+
+        // if (Engine.IsEditorHint())
+            // hurtbox.Owner = EditorInterface.Singleton.GetEditedSceneRoot();
     }
 }

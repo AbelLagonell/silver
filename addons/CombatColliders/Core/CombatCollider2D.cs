@@ -1,11 +1,14 @@
-using System.Collections.Generic;
+using System;
+using System.Linq;
 using Godot;
 using Godot.Collections;
+using Microsoft.VisualBasic;
 
 public abstract partial class CombatCollider2D<[MustBeVariant] T> : Area2D
-    where T : HurtboxShape2D
+    where T : HurtboxShape2D, new()
 {
-    private enum ShapeType
+    
+    public enum ShapeType
     {
         Circle,
         Rectangle,
@@ -14,6 +17,8 @@ public abstract partial class CombatCollider2D<[MustBeVariant] T> : Area2D
 
     [Export(PropertyHint.Range, "0,10,or_greater,hide_slider")]
     protected int CurrentFrame = 0;
+
+    protected Dictionary<int, Array<T>> Frames = new();
 
     //----------------
     //---Shape Type---
@@ -28,10 +33,10 @@ public abstract partial class CombatCollider2D<[MustBeVariant] T> : Area2D
             _shape = value;
             Shape2D = value switch
             {
-                ShapeType.Circle => new CircleShape2D(),
+                ShapeType.Circle    => new CircleShape2D(),
                 ShapeType.Rectangle => new RectangleShape2D(),
-                ShapeType.Capsule => new CapsuleShape2D(),
-                _ => Shape2D
+                ShapeType.Capsule   => new CapsuleShape2D(),
+                _                   => Shape2D
             };
         }
     }
@@ -57,7 +62,6 @@ public abstract partial class CombatCollider2D<[MustBeVariant] T> : Area2D
 
 
     [ExportGroup("Collision Layers")]
-
     [Export(PropertyHint.Range, "1,32,1")]
     private int _enemyHurtboxLayer
     {
@@ -121,31 +125,87 @@ public abstract partial class CombatCollider2D<[MustBeVariant] T> : Area2D
     //-------------
     //---Utility---
     //-------------
-
     protected abstract void ChangeCollision();
 
-    private void ActivateFrame(List<Frame<T>> frames, int actingFrame = 0)
+    /// <summary>
+    /// Activates the acting frame from the possible frames in this Set
+    /// </summary>
+    /// <param name="actingFrame">The frame that needs activation</param>
+    private void ActivateFrame(int actingFrame = 0)
     {
-        frames[actingFrame].SetDisable(false);
+        //frames[actingFrame].SetDisable(false);
     }
 
+    /// <summary>
+    /// Deactivates All frames within this set
+    /// </summary>
     private void DeactivateAllFrames()
     {
+        // foreach (var frame in frames)
+        // frame.SetDisable(true);
+    }
+
+
+    protected virtual void AddCollisionToFrame(int actingFrame)
+    {
+        if (actingFrame < 0)
+            throw new ArgumentException("Acting Frame is less than zero");
+        if (actingFrame + 1 > Frames.Count)
+        {
+            GD.PrintErr($"Tried to make frame {actingFrame} but its not in sequence placing new frame in frame {Frames.Count + 1}");
+            actingFrame = Frames.Count;
+        }
+
+        if (actingFrame == Frames.Count)
+            // frames.Add(new Frame<T>());
+
+            CurrentFrame = actingFrame;
     }
 
     private void AddFrame() { }
 
-    private void AddCollisionCurrent() { }
+    private void AddCollisionCurrent()
+    {
+        AddCollisionToFrame(CurrentFrame);
+    }
 
-    private void AddCollisionNext() { }
+    private void AddCollisionNext()
+    {
+        AddCollisionToFrame(++CurrentFrame);
+    }
 
-    private void ResetCurrentFrame() { }
+    private void ResetCurrentFrame()
+    {
+        if (!Frames.TryGetValue(CurrentFrame, out var actingFrame)) return;
+        foreach (var collider in actingFrame)
+            collider.QueueFree();
+        
+        actingFrame.Clear();
+    }
 
-    private void RemoveCurrentFrame() { }
+    private void RemoveCurrentFrame()
+    {
+        ResetCurrentFrame();
+        // frames[CurrentFrame].ResetShapes();
+        // frames.RemoveAt(CurrentFrame);
+    }
 
-    private void ResetAllFrames() { }
+    private void ResetAllFrames()
+    {
+        // foreach (var frame in frames)
+        // frame.ResetShapes();
+    }
 
-    private void RemoveAllFrames() { }
+    private void RemoveAllFrames()
+    {
+        for (int i = 0; i < Frames.Count(); i++)
+        {
+            // frames[i].ResetShapes();
+        }
+
+        Frames.Clear();
+        CurrentFrame = 0;
+    }
 
     public override Array<Dictionary> _GetPropertyList()
     {
@@ -162,13 +222,11 @@ public abstract partial class CombatCollider2D<[MustBeVariant] T> : Area2D
         {
             { "name", "_alwaysVisible" },
             { "type", (int)Variant.Type.Bool },
-            { "usage", (int)(PropertyUsageFlags.Checkable | PropertyUsageFlags.Editor) }
         });
         propList.Add(new()
         {
             { "name", "_alwaysActive" },
             { "type", (int)Variant.Type.Bool },
-            { "usage", (int)(PropertyUsageFlags.Checkable) }
         });
 
         return propList;

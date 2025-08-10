@@ -5,6 +5,8 @@ using System;
 [GlobalClass]
 public partial class HurtboxShape2D : CollisionShape2D
 {
+
+
     private void PlaceInFrameBefore() { }
 
     private void PlaceInCurrentFrame() { }

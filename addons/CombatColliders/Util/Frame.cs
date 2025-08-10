@@ -1,15 +1,18 @@
-using System.Collections.Generic;
 using Godot;
+using Godot.Collections;
 
-struct Frame<[MustBeVariant] T> where T : HurtboxShape2D
+public partial class Frame<[MustBeVariant] T> : Resource
+    where T : HurtboxShape2D, new()
 {
+    private int frame;
+
     public bool AllDisabled { get; private set; }
-    public System.Collections.Generic.List<T> Shapes { get; private set; }
+    [Export] public Array<T> Shapes { get; private set; }
 
     public Frame()
     {
         AllDisabled = true;
-        Shapes = new List<T>();
+        Shapes = new Array<T>();
     }
 
     public void SetDisable(bool isDisabled)
@@ -19,7 +22,27 @@ struct Frame<[MustBeVariant] T> where T : HurtboxShape2D
         AllDisabled = isDisabled;
     }
 
-    // public T AddShape(Shape3D shape)
-    // {
-    // }
+    public T AddShape(Shape2D shape, string name, Color debugColor)
+    {
+        T collider = new();
+        collider.Shape = shape;
+        collider.Name = name;
+        collider.DebugColor = debugColor;
+        collider.SetDisabled(false);
+
+        Shapes.Add(collider);
+
+        return collider;
+    }
+
+    public void ResetShapes()
+    {
+        var temp = Shapes;
+        Shapes = [];
+
+        foreach (var hurtboxShape2D in temp)
+        {
+            hurtboxShape2D.QueueFree();
+        }
+    }
 }
