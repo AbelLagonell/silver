@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://dcx3s11ypifi4"]
+
+[ext_resource type="Script" uid="uid://cxuok3ox1l3g3" path="res://addons/CombatColliders/Core/HurtboxSet.cs" id="1_7vbr3"]
+
+[node name="TestingSpace" type="Node2D"]
+
+[node name="HurtboxSet" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_7vbr3")
+Shape = 2
+CurrentFrame = 2
+_isEnemy = false
+"Collision Layers" = null
+_enemyHurtboxLayer = 3
+_playerHurtboxLayer = 4
+_enemyHitboxLayer = 7
+_playerHitboxLayer = 8
+_alwaysVisible = false
+_alwaysActive = false
+ViewFrame = 2
+metadata/_custom_type_script = "uid://cxuok3ox1l3g3"

@@ -26,14 +26,18 @@ public partial class HurtboxSet : CombatCollider2D<HurtboxShape2D>
     {
         base.AddCollisionToFrame(actingFrame);
 
-        // string shapeName = $"Frame {actingFrame} Hurtbox {frames[actingFrame].Shapes.Count}";
-        // Shape2D colliderShape = (Shape2D)System.Activator.CreateInstance(Shape2D.GetType());
+        string shapeName = $"Frame {actingFrame} Hurtbox {Frames[actingFrame].Count}";
+        Shape2D colliderShape = (Shape2D)System.Activator.CreateInstance(Shape2D.GetType());
 
-        // var hurtbox = frames[actingFrame].AddShape(colliderShape, shapeName, _debugColor);
+        var hurtbox = AddShape(colliderShape, shapeName, _debugColor);
+        Frames[actingFrame].Add(hurtbox);
         
-        // AddChild(hurtbox);
+        GD.Print(Frames);
+        
+        AddChild(hurtbox);
+        
 
-        // if (Engine.IsEditorHint())
-            // hurtbox.Owner = EditorInterface.Singleton.GetEditedSceneRoot();
+        if (Engine.IsEditorHint())
+            hurtbox.Owner = EditorInterface.Singleton.GetEditedSceneRoot();
     }
 }

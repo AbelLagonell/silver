@@ -7,7 +7,6 @@ using Microsoft.VisualBasic;
 public abstract partial class CombatCollider2D<[MustBeVariant] T> : Area2D
     where T : HurtboxShape2D, new()
 {
-    
     public enum ShapeType
     {
         Circle,
@@ -15,16 +14,27 @@ public abstract partial class CombatCollider2D<[MustBeVariant] T> : Area2D
         Capsule
     }
 
-    [Export(PropertyHint.Range, "0,10,or_greater,hide_slider")]
     protected int CurrentFrame = 0;
 
     protected Dictionary<int, Array<T>> Frames = new();
+
+    private int ViewFrame
+    {
+        get => _viewFrame;
+        set
+        {
+            _viewFrame = value;
+            NotifyPropertyListChanged();
+        }
+    }
+    private int _viewFrame = 0;
+
+    private Array<T> _viewArray = null;
 
     //----------------
     //---Shape Type---
     //----------------
 
-    [Export]
     private ShapeType Shape
     {
         get => _shape;
@@ -49,7 +59,6 @@ public abstract partial class CombatCollider2D<[MustBeVariant] T> : Area2D
     //----------------------
     private bool _isEnemy = false;
 
-    [Export]
     protected bool IsEnemy
     {
         get => _isEnemy;
@@ -61,8 +70,6 @@ public abstract partial class CombatCollider2D<[MustBeVariant] T> : Area2D
     }
 
 
-    [ExportGroup("Collision Layers")]
-    [Export(PropertyHint.Range, "1,32,1")]
     private int _enemyHurtboxLayer
     {
         get => EnemyHurtboxLayer;
@@ -71,25 +78,22 @@ public abstract partial class CombatCollider2D<[MustBeVariant] T> : Area2D
 
     protected static int EnemyHurtboxLayer = 3;
 
-    [Export(PropertyHint.Range, "1,32,1")]
     private int _playerHurtboxLayer
     {
         get => PlayerHurtboxLayer;
         set => PlayerHurtboxLayer = value;
     }
 
-    protected int EnemyHitboxLayer = 7;
+    protected static int EnemyHitboxLayer = 7;
 
-    [Export(PropertyHint.Range, "1,32,1")]
     private int _enemyHitboxLayer
     {
         get => EnemyHitboxLayer;
         set => EnemyHitboxLayer = value;
     }
 
-    protected int PlayerHitboxLayer = 8;
+    protected static int PlayerHitboxLayer = 8;
 
-    [Export(PropertyHint.Range, "1,32,1")]
     private int _playerHitboxLayer
     {
         get => PlayerHitboxLayer;
@@ -150,19 +154,25 @@ public abstract partial class CombatCollider2D<[MustBeVariant] T> : Area2D
     {
         if (actingFrame < 0)
             throw new ArgumentException("Acting Frame is less than zero");
-        if (actingFrame + 1 > Frames.Count)
-        {
-            GD.PrintErr($"Tried to make frame {actingFrame} but its not in sequence placing new frame in frame {Frames.Count + 1}");
-            actingFrame = Frames.Count;
-        }
+        if (!Frames.ContainsKey(actingFrame))
+            Frames.Add(actingFrame, new Array<T>());
 
-        if (actingFrame == Frames.Count)
-            // frames.Add(new Frame<T>());
-
-            CurrentFrame = actingFrame;
+        CurrentFrame = actingFrame;
+        NotifyPropertyListChanged();
     }
 
     private void AddFrame() { }
+
+    protected T AddShape(Shape2D shape, string name, Color debugColor)
+    {
+        T collider = new();
+        collider.Shape = shape;
+        collider.Name = name;
+        collider.DebugColor = debugColor;
+        collider.SetDisabled(false);
+
+        return collider;
+    }
 
     private void AddCollisionCurrent()
     {
@@ -179,55 +189,133 @@ public abstract partial class CombatCollider2D<[MustBeVariant] T> : Area2D
         if (!Frames.TryGetValue(CurrentFrame, out var actingFrame)) return;
         foreach (var collider in actingFrame)
             collider.QueueFree();
-        
+
         actingFrame.Clear();
+        NotifyPropertyListChanged();
     }
 
     private void RemoveCurrentFrame()
     {
         ResetCurrentFrame();
-        // frames[CurrentFrame].ResetShapes();
-        // frames.RemoveAt(CurrentFrame);
+        Frames.Remove(CurrentFrame);
+        CurrentFrame--;
+        NotifyPropertyListChanged();
     }
 
     private void ResetAllFrames()
     {
-        // foreach (var frame in frames)
-        // frame.ResetShapes();
+        CurrentFrame = 0;
+        for (int i = 0; i < Frames.Count(); i++)
+        {
+            ResetCurrentFrame();
+            CurrentFrame++;
+        }
+
+        CurrentFrame = 0;
+        NotifyPropertyListChanged();
     }
 
     private void RemoveAllFrames()
     {
-        for (int i = 0; i < Frames.Count(); i++)
-        {
-            // frames[i].ResetShapes();
-        }
-
+        ResetAllFrames();
         Frames.Clear();
-        CurrentFrame = 0;
+        NotifyPropertyListChanged();
     }
 
     public override Array<Dictionary> _GetPropertyList()
     {
         var propList = new Array<Dictionary>();
 
-        propList.Add(new()
-        {
-            { "name", "Debug" },
-            { "type", (int)Variant.Type.String },
-            { "usage", (int)PropertyUsageFlags.Group }
-        });
+        propList.AddRange([
+            new()
+            {
+                { "name", "Shape" },
+                { "type", (int)Variant.Type.Int },
+                { "hint", (int)PropertyHint.Enum },
+                { "hint_string", "Circle, Rectangle, Capsule" },
+            },
+            new()
+            {
+                { "name", "CurrentFrame" },
+                { "type", (int)Variant.Type.Int },
+                { "hint", (int)PropertyHint.Range },
+                { "hint_string", "0,10,or_greater,hide_slider" },
+            },
+            new()
+            {
+                { "name", "_isEnemy" },
+                { "type", (int)Variant.Type.Bool },
+            },
+            new()
+            {
+                { "name", "Collision Layers" },
+                { "usage", (int)(PropertyUsageFlags.Group | PropertyUsageFlags.Default) }
+            },
+            new()
+            {
+                { "name", "_enemyHurtboxLayer" },
+                { "type", (int)Variant.Type.Int },
+                { "hint", (int)PropertyHint.Range },
+                { "hint_string", "1,32,1" },
+            },
+            new()
+            {
+                { "name", "_playerHurtboxLayer" },
+                { "type", (int)Variant.Type.Int },
+                { "hint", (int)PropertyHint.Range },
+                { "hint_string", "1,32,1" },
+            },
+            new()
+            {
+                { "name", "_enemyHitboxLayer" },
+                { "type", (int)Variant.Type.Int },
+                { "hint", (int)PropertyHint.Range },
+                { "hint_string", "1,32,1" },
+            },
+            new()
+            {
+                { "name", "_playerHitboxLayer" },
+                { "type", (int)Variant.Type.Int },
+                { "hint", (int)PropertyHint.Range },
+                { "hint_string", "1,32,1" },
+            },
+            new()
+            {
+                { "name", "Debug" },
+                { "type", (int)Variant.Type.String },
+                { "usage", (int)PropertyUsageFlags.Group }
+            },
+            new()
+            {
+                { "name", "_alwaysVisible" },
+                { "type", (int)Variant.Type.Bool },
+            },
+            new()
+            {
+                { "name", "_alwaysActive" },
+                { "type", (int)Variant.Type.Bool },
+            },
+            new()
+            {
+                { "name", "ViewFrame" },
+                { "type", (int)Variant.Type.Int },
+                { "hint", (int)PropertyHint.Range },
+                { "hint_string", $"0,{(Frames.Count != 0 ? Frames.Count - 1 : 0)},1" },
+            },
+        ]);
 
-        propList.Add(new()
+        if (Frames.TryGetValue(_viewFrame, out var viewFrame) && viewFrame.Count != 0)
         {
-            { "name", "_alwaysVisible" },
-            { "type", (int)Variant.Type.Bool },
-        });
-        propList.Add(new()
-        {
-            { "name", "_alwaysActive" },
-            { "type", (int)Variant.Type.Bool },
-        });
+            _viewArray = Frames[_viewFrame];
+            propList.Add(new()
+            {
+                { "name", "_viewArray" },
+                { "type", (int)Variant.Type.Array },
+                { "usage", (int)(PropertyUsageFlags.ReadOnly | PropertyUsageFlags.Editor) },
+                { "hint", (int)PropertyHint.TypeString },
+                { "hint_string", $"{Variant.Type.Object}/{PropertyHint.NodeType:D}:CollisionShape2D" },
+            });
+        }
 
         return propList;
     }

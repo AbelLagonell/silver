@@ -52,7 +52,7 @@ public partial class ColliderInspectorPlugin : EditorInspectorPlugin
                     buttonName = "Reset Current Frame";
                     break;
                 case "RemoveCurrentFrame":
-                    buttonName = "Remove Collider from Current Frame";
+                    buttonName = "Remove Current Frame";
                     break;
                 case "PlaceInFrameBefore":
                     buttonName = "Place In Frame Before";
