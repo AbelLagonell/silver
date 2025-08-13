@@ -1,5 +1,4 @@
 using System;
-using System.Linq;
 using Godot;
 using Godot.Collections;
 
@@ -121,12 +120,26 @@ public abstract partial class CombatCollider2D<[MustBeVariant] T> : Area2D
         SetCollisionMaskValue(1, false);
         ChangeCollision();
 
-        // AreaShapeEntered += OnAreaShapeEntered;
+        AreaShapeEntered += OnAreaShapeEntered;
     }
 
-    protected void Start() { }
-    protected void NextFrame() { }
-    protected void End() { }
+    protected abstract void OnAreaShapeEntered(Rid areaRid, Area2D area, long areaShapeIndex, long localShapeIndex);
+
+    protected void Start()
+    {
+        CurrentFrame = 0;
+        ActivateFrame(CurrentFrame);
+    }
+
+    protected void NextFrame()
+    {
+        ActivateFrame(++CurrentFrame);
+    }
+
+    protected void End()
+    {
+        DeactivateAllFrames();
+    }
 
     //-------------
     //---Utility---
@@ -134,12 +147,14 @@ public abstract partial class CombatCollider2D<[MustBeVariant] T> : Area2D
     protected abstract void ChangeCollision();
 
     /// <summary>
-    /// Activates the acting frame from the possible frames in this Set
+    /// Sets the acting frame in this set to the value inputted
     /// </summary>
     /// <param name="actingFrame">The frame that needs activation</param>
-    private void ActivateFrame(int actingFrame = 0)
+    /// <param name="deactivate">Whether the frame is to be on or off</param>
+    private void SetFrame(int actingFrame = 0, bool deactivate = false)
     {
-        //frames[actingFrame].SetDisable(false);
+        foreach (var shape2D in Frames[actingFrame])
+            shape2D.SetDisabled(deactivate);
     }
 
     /// <summary>
@@ -147,8 +162,14 @@ public abstract partial class CombatCollider2D<[MustBeVariant] T> : Area2D
     /// </summary>
     private void DeactivateAllFrames()
     {
-        // foreach (var frame in frames)
-        // frame.SetDisable(true);
+        foreach (var frame in Frames.Keys)
+            SetFrame(frame, deactivate: true);
+    }
+
+    private void ActivateFrame(int actingFrame)
+    {
+        foreach (var frame in Frames.Keys)
+            SetFrame(frame, frame != actingFrame);
     }
 
 
@@ -162,8 +183,6 @@ public abstract partial class CombatCollider2D<[MustBeVariant] T> : Area2D
         CurrentFrame = actingFrame;
         NotifyPropertyListChanged();
     }
-
-    private void AddFrame() { }
 
     protected T AddShape(Shape2D shape, string name, Color debugColor)
     {
@@ -283,7 +302,7 @@ public abstract partial class CombatCollider2D<[MustBeVariant] T> : Area2D
             },
             new()
             {
-                {"name", "_debugColor"},
+                { "name", "_debugColor" },
                 { "type", (int)Variant.Type.Color },
                 { "usage", (int)PropertyUsageFlags.Default },
             },

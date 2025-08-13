@@ -7,12 +7,20 @@ using Godot.Collections;
 public partial class HurtboxSet : CombatCollider2D<HurtboxShape2D>
 {
     [Signal]
-    public delegate void DamageTakenEventHandler(int damage, GodotObject sender);
+    public delegate void DamageTakenEventHandler(float damage, GodotObject sender);
 
     [Signal]
     public delegate void HitboxInformationEventHandler(Array<Resource> hitboxInfo);
 
     private new Color _debugColor = new Color("SkyBlue", 0.41f);
+
+    protected override void OnAreaShapeEntered(Rid areaRid, Area2D area, long areaShapeIndex, long localShapeIndex)
+    {
+        if (area is not HitboxSet hitboxSet) return;
+        var hitboxShape = hitboxSet.GetChild<HitboxShape2D>((int)areaShapeIndex);
+        EmitSignalDamageTaken(hitboxShape.Damage, hitboxSet);
+        
+    }
 
     protected override void ChangeCollision()
     {

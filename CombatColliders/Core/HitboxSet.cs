@@ -5,7 +5,16 @@ using Godot.Collections;
 [GlobalClass]
 public partial class HitboxSet : CombatCollider2D<HitboxShape2D>
 {
+    [Signal]
+    public delegate void DamageGivenEventHandler(HurtboxSet hurtboxSet, HurtboxShape2D hurtboxShape);
+
     private new Color _debugColor = new Color("Red", 0.3f);
+
+    protected override void OnAreaShapeEntered(Rid areaRid, Area2D area, long areaShapeIndex, long localShapeIndex)
+    {
+        if (area is not HurtboxSet hurtboxSet) return;
+        EmitSignalDamageGiven(hurtboxSet, hurtboxSet.GetChild((int)areaShapeIndex) as HurtboxShape2D);
+    }
 
     protected override void ChangeCollision()
     {
@@ -15,21 +24,21 @@ public partial class HitboxSet : CombatCollider2D<HitboxShape2D>
         SetCollisionLayerValue(PlayerHitboxLayer, !IsEnemy);
         SetCollisionMaskValue(EnemyHurtboxLayer, !IsEnemy);
     }
-    
+
     protected override void AddCollisionToFrame(int actingFrame)
     {
         base.AddCollisionToFrame(actingFrame);
 
         string shapeName = $"Frame {actingFrame} Hitbox {Frames[actingFrame].Count}";
         Shape2D colliderShape = (Shape2D)System.Activator.CreateInstance(Shape2D.GetType());
-        
+
         var hitbox = AddShape(colliderShape, shapeName, _debugColor);
         Frames[actingFrame].Add(hitbox);
-        
+
         //Defaults for stuff
-        
+
         AddChild(hitbox);
-        
+
         if (Engine.IsEditorHint())
             hitbox.Owner = EditorInterface.Singleton.GetEditedSceneRoot();
     }
