@@ -2,8 +2,8 @@ using System;
 using System.Linq;
 using Godot;
 using Godot.Collections;
-using Microsoft.VisualBasic;
 
+[Tool]
 public abstract partial class CombatCollider2D<[MustBeVariant] T> : Area2D
     where T : HurtboxShape2D, new()
 {
@@ -15,6 +15,7 @@ public abstract partial class CombatCollider2D<[MustBeVariant] T> : Area2D
     }
 
     protected int CurrentFrame = 0;
+    protected Color _debugColor;
 
     protected Dictionary<int, Array<T>> Frames = new();
 
@@ -27,6 +28,7 @@ public abstract partial class CombatCollider2D<[MustBeVariant] T> : Area2D
             NotifyPropertyListChanged();
         }
     }
+
     private int _viewFrame = 0;
 
     private Array<T> _viewArray = null;
@@ -174,38 +176,43 @@ public abstract partial class CombatCollider2D<[MustBeVariant] T> : Area2D
         return collider;
     }
 
-    private void AddCollisionCurrent()
+
+    private Callable AddCollisionToCurrent()
     {
         AddCollisionToFrame(CurrentFrame);
+        return default;
     }
 
-    private void AddCollisionNext()
+    private Callable AddCollisionNext()
     {
         AddCollisionToFrame(++CurrentFrame);
+        return default;
     }
 
-    private void ResetCurrentFrame()
+    private Callable ResetCurrentFrame()
     {
-        if (!Frames.TryGetValue(CurrentFrame, out var actingFrame)) return;
+        if (!Frames.TryGetValue(CurrentFrame, out var actingFrame)) return default;
         foreach (var collider in actingFrame)
             collider.QueueFree();
 
         actingFrame.Clear();
         NotifyPropertyListChanged();
+        return default;
     }
 
-    private void RemoveCurrentFrame()
+    private Callable RemoveCurrentFrame()
     {
         ResetCurrentFrame();
         Frames.Remove(CurrentFrame);
         CurrentFrame--;
         NotifyPropertyListChanged();
+        return default;
     }
 
-    private void ResetAllFrames()
+    private Callable ResetAllFrames()
     {
         CurrentFrame = 0;
-        for (int i = 0; i < Frames.Count(); i++)
+        for (int i = 0; i < Frames.Count; i++)
         {
             ResetCurrentFrame();
             CurrentFrame++;
@@ -213,13 +220,15 @@ public abstract partial class CombatCollider2D<[MustBeVariant] T> : Area2D
 
         CurrentFrame = 0;
         NotifyPropertyListChanged();
+        return default;
     }
 
-    private void RemoveAllFrames()
+    private Callable RemoveAllFrames()
     {
         ResetAllFrames();
         Frames.Clear();
         NotifyPropertyListChanged();
+        return default;
     }
 
     public override Array<Dictionary> _GetPropertyList()
@@ -229,6 +238,44 @@ public abstract partial class CombatCollider2D<[MustBeVariant] T> : Area2D
         propList.AddRange([
             new()
             {
+                { "name", "AddCollisionToCurrent" },
+                { "type", (int)Variant.Type.Callable },
+                { "usage", (int)PropertyUsageFlags.Default },
+                { "hint", (int)PropertyHint.ToolButton },
+                { "hint_string", "Add Collider To Current Frame" }
+            },
+            new()
+            {
+                { "name", "AddCollisionNext" },
+                { "type", (int)Variant.Type.Callable },
+                { "usage", (int)PropertyUsageFlags.Default },
+                { "hint", (int)PropertyHint.ToolButton },
+                { "hint_string", "Add Collider To Next Frame" }
+            },
+            new()
+            {
+                { "name", "ResetCurrentFrame" },
+                { "type", (int)Variant.Type.Callable },
+                { "usage", (int)PropertyUsageFlags.Default },
+                { "hint", (int)PropertyHint.ToolButton },
+                { "hint_string", "Reset Current Frame" }
+            },
+            new()
+            {
+                { "name", "RemoveCurrentFrame" },
+                { "type", (int)Variant.Type.Callable },
+                { "usage", (int)PropertyUsageFlags.Default },
+                { "hint", (int)PropertyHint.ToolButton },
+                { "hint_string", "Remove Current Frame" }
+            },
+            new()
+            {
+                { "name", "Settings" },
+                { "type", (int)Variant.Type.String },
+                { "usage", (int)PropertyUsageFlags.Group },
+            },
+            new()
+            {
                 { "name", "Shape" },
                 { "type", (int)Variant.Type.Int },
                 { "hint", (int)PropertyHint.Enum },
@@ -236,10 +283,16 @@ public abstract partial class CombatCollider2D<[MustBeVariant] T> : Area2D
             },
             new()
             {
+                {"name", "_debugColor"},
+                { "type", (int)Variant.Type.Color },
+                { "usage", (int)PropertyUsageFlags.Default },
+            },
+            new()
+            {
                 { "name", "CurrentFrame" },
                 { "type", (int)Variant.Type.Int },
                 { "hint", (int)PropertyHint.Range },
-                { "hint_string", "0,10,or_greater,hide_slider" },
+                { "hint_string", $"0,{(Frames.Count != 0 ? Frames.Count + 1 : 1)},or_greater,hide_slider" },
             },
             new()
             {
@@ -301,6 +354,22 @@ public abstract partial class CombatCollider2D<[MustBeVariant] T> : Area2D
                 { "type", (int)Variant.Type.Int },
                 { "hint", (int)PropertyHint.Range },
                 { "hint_string", $"0,{(Frames.Count != 0 ? Frames.Count - 1 : 0)},1" },
+            },
+            new()
+            {
+                { "name", "ResetAllFrames" },
+                { "type", (int)Variant.Type.Callable },
+                { "usage", (int)PropertyUsageFlags.Default },
+                { "hint", (int)PropertyHint.ToolButton },
+                { "hint_string", "Reset All Frames" }
+            },
+            new()
+            {
+                { "name", "RemoveAllFrames" },
+                { "type", (int)Variant.Type.Callable },
+                { "usage", (int)PropertyUsageFlags.Default },
+                { "hint", (int)PropertyHint.ToolButton },
+                { "hint_string", "Remove All Frames" }
             },
         ]);
 

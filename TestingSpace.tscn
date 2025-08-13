@@ -1,15 +1,20 @@
 [gd_scene load_steps=2 format=3 uid="uid://dcx3s11ypifi4"]
 
-[ext_resource type="Script" uid="uid://cxuok3ox1l3g3" path="res://addons/CombatColliders/Core/HurtboxSet.cs" id="1_7vbr3"]
+[ext_resource type="Script" uid="uid://bddlhnmtsegmh" path="res://CombatColliders/Core/HitboxSet.cs" id="1_lrikc"]
 
 [node name="TestingSpace" type="Node2D"]
 
-[node name="HurtboxSet" type="Area2D" parent="."]
-collision_layer = 8
-collision_mask = 0
-script = ExtResource("1_7vbr3")
+[node name="HitboxSet" type="Area2D" parent="."]
+collision_layer = 128
+collision_mask = 4
+script = ExtResource("1_lrikc")
+AddCollisionToCurrent = Callable()
+AddCollisionNext = Callable()
+ResetCurrentFrame = Callable()
+RemoveCurrentFrame = Callable()
 Shape = 2
-CurrentFrame = 2
+_debugColor = Color(1, 0, 0, 0.3)
+CurrentFrame = 0
 _isEnemy = false
 "Collision Layers" = null
 _enemyHurtboxLayer = 3
@@ -18,5 +23,7 @@ _enemyHitboxLayer = 7
 _playerHitboxLayer = 8
 _alwaysVisible = false
 _alwaysActive = false
-ViewFrame = 2
-metadata/_custom_type_script = "uid://cxuok3ox1l3g3"
+ViewFrame = 0
+ResetAllFrames = Callable()
+RemoveAllFrames = Callable()
+metadata/_custom_type_script = "uid://bddlhnmtsegmh"

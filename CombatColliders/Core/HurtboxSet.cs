@@ -12,9 +12,7 @@ public partial class HurtboxSet : CombatCollider2D<HurtboxShape2D>
     [Signal]
     public delegate void HitboxInformationEventHandler(Array<Resource> hitboxInfo);
 
-    [Export]
-    private Color _debugColor = new Color("SkyBlue", 0.41f);
-
+    private new Color _debugColor = new Color("SkyBlue", 0.41f);
 
     protected override void ChangeCollision()
     {
@@ -32,10 +30,7 @@ public partial class HurtboxSet : CombatCollider2D<HurtboxShape2D>
         var hurtbox = AddShape(colliderShape, shapeName, _debugColor);
         Frames[actingFrame].Add(hurtbox);
         
-        GD.Print(Frames);
-        
         AddChild(hurtbox);
-        
 
         if (Engine.IsEditorHint())
             hurtbox.Owner = EditorInterface.Singleton.GetEditedSceneRoot();
