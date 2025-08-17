@@ -1,15 +1,15 @@
 using Godot;
-using Godot.Collections;
 
 [Tool]
 [GlobalClass]
 [Icon(("res://Icons/Hitbox_Set.svg"))]
 public partial class HitboxSet : CombatCollider2D<HitboxShape2D>
 {
+    //TODO Add Hitbox Prioritization
     [Signal]
     public delegate void DamageGivenEventHandler(HurtboxSet hurtboxSet, HurtboxShape2D hurtboxShape);
 
-    private new Color _debugColor = new Color("Red", 0.3f);
+    private Color _debugColor = new Color("Red", 0.3f);
 
     public override void _Ready()
     {
@@ -17,7 +17,7 @@ public partial class HitboxSet : CombatCollider2D<HitboxShape2D>
         AreaShapeEntered += OnAreaShapeEntered;
     }
 
-    protected void OnAreaShapeEntered(Rid areaRid, Area2D area, long areaShapeIndex, long localShapeIndex)
+    private void OnAreaShapeEntered(Rid areaRid, Area2D area, long areaShapeIndex, long localShapeIndex)
     {
         if (area.GetChild((int)areaShapeIndex) is not HurtboxShape2D hurtboxShape) return;
         EmitSignalDamageGiven((HurtboxSet)area, hurtboxShape);

@@ -13,8 +13,8 @@ public abstract partial class CombatCollider2D<[MustBeVariant] T> : Area2D
         Capsule
     }
 
-    protected int CurrentFrame = 0;
-    protected Color _debugColor;
+    private int _currentFrame;
+    private Color _debugColor;
 
     protected Dictionary<int, Array<NodePath>> Frames = new();
 
@@ -28,9 +28,9 @@ public abstract partial class CombatCollider2D<[MustBeVariant] T> : Area2D
         }
     }
 
-    private int _viewFrame = 0;
+    private int _viewFrame;
 
-    private Array<T> _viewArray = null;
+    private Array<T> _viewArray;
 
     //----------------
     //---Shape Type---
@@ -58,12 +58,12 @@ public abstract partial class CombatCollider2D<[MustBeVariant] T> : Area2D
     //----------------------
     //---Collision Layers---
     //----------------------
-    private bool _isEnemy = false;
+    private bool _isEnemy;
 
     protected bool IsEnemy
     {
         get => _isEnemy;
-        set
+        private set
         {
             _isEnemy = value;
             ChangeCollision();
@@ -136,18 +136,18 @@ public abstract partial class CombatCollider2D<[MustBeVariant] T> : Area2D
         }
     }
 
-    protected void Start()
+    private void Start()
     {
-        CurrentFrame = 0;
-        ActivateFrame(CurrentFrame);
+        _currentFrame = 0;
+        ActivateFrame(_currentFrame);
     }
 
-    protected void NextFrame()
+    private void NextFrame()
     {
-        ActivateFrame(++CurrentFrame);
+        ActivateFrame(++_currentFrame);
     }
 
-    protected void End()
+    private void End()
     {
         DeactivateAllFrames();
     }
@@ -162,6 +162,7 @@ public abstract partial class CombatCollider2D<[MustBeVariant] T> : Area2D
     /// </summary>
     /// <param name="actingFrame">The frame that needs activation</param>
     /// <param name="deactivate">Whether the frame is to be on or off</param>
+    /// <param name="visible">Whether the frame is to be visible or not</param>
     private void SetFrame(int actingFrame = 0, bool deactivate = false, bool visible = false)
     {
         foreach (var nodePath in Frames[actingFrame])
@@ -197,14 +198,14 @@ public abstract partial class CombatCollider2D<[MustBeVariant] T> : Area2D
         if (!Frames.ContainsKey(actingFrame))
             Frames.Add(actingFrame, new Array<NodePath>());
 
-        CurrentFrame = actingFrame;
+        _currentFrame = actingFrame;
         NotifyPropertyListChanged();
     }
 
     protected T AddShape(Shape2D shape, string name, Color debugColor)
     {
         T collider = new();
-        collider.Frame = CurrentFrame;
+        collider.Frame = _currentFrame;
         collider.Shape = shape;
         collider.Name = name;
         collider.DebugColor = debugColor;
@@ -216,25 +217,25 @@ public abstract partial class CombatCollider2D<[MustBeVariant] T> : Area2D
 
     private Callable AddCollisionToCurrent()
     {
-        AddCollisionToFrame(CurrentFrame);
+        AddCollisionToFrame(_currentFrame);
         return default;
     }
 
     private Callable AddCollisionNext()
     {
-        AddCollisionToFrame(++CurrentFrame);
+        AddCollisionToFrame(++_currentFrame);
         return default;
     }
 
     private Callable AddEmptyFrame()
     {
-        Frames.Add(++CurrentFrame, new Array<NodePath>());
+        Frames.Add(++_currentFrame, new Array<NodePath>());
         return default;
     }
 
     private Callable ResetCurrentFrame()
     {
-        if (!Frames.TryGetValue(CurrentFrame, out var actingFrame)) return default;
+        if (!Frames.TryGetValue(_currentFrame, out var actingFrame)) return default;
         foreach (var nodePath in actingFrame)
             GetNodeOrNull(nodePath)?.QueueFree();
 
@@ -246,22 +247,22 @@ public abstract partial class CombatCollider2D<[MustBeVariant] T> : Area2D
     private Callable RemoveCurrentFrame()
     {
         ResetCurrentFrame();
-        Frames.Remove(CurrentFrame);
-        if (CurrentFrame > 0) CurrentFrame--;
+        Frames.Remove(_currentFrame);
+        if (_currentFrame > 0) _currentFrame--;
         NotifyPropertyListChanged();
         return default;
     }
 
     private Callable ResetAllFrames()
     {
-        CurrentFrame = 0;
+        _currentFrame = 0;
         for (int i = 0; i < Frames.Count; i++)
         {
             ResetCurrentFrame();
-            CurrentFrame++;
+            _currentFrame++;
         }
 
-        CurrentFrame = 0;
+        _currentFrame = 0;
         NotifyPropertyListChanged();
         return default;
     }

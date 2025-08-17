@@ -1,7 +1,6 @@
 using Godot;
 using Godot.Collections;
 
-
 [Tool]
 [GlobalClass]
 [Icon("res://Icons/Hurtbox_Set.svg")]
@@ -13,7 +12,7 @@ public partial class HurtboxSet : CombatCollider2D<HurtboxShape2D>
     [Signal]
     public delegate void HitboxInformationEventHandler(Array<Resource> hitboxInfo);
 
-    private new Color _debugColor = new Color("SkyBlue", 0.41f);
+    private Color _debugColor = new Color("SkyBlue", 0.41f);
 
     public void TakeDamage(float dmg, HitboxSet hitboxSet)
     {
