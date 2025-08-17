@@ -3,9 +3,9 @@ using System;
 
 [Tool]
 [GlobalClass]
-public partial class HurtboxShape2D : CollisionShape2D
+public partial class HurtboxShape2D() : CollisionShape2D
 {
-
+    [Export] public int Frame;
 
     private void PlaceInFrameBefore() { }
 

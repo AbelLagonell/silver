@@ -1,20 +1,106 @@
-[gd_scene load_steps=2 format=3 uid="uid://dcx3s11ypifi4"]
+[gd_scene load_steps=10 format=3 uid="uid://dcx3s11ypifi4"]
 
-[ext_resource type="Script" uid="uid://bddlhnmtsegmh" path="res://CombatColliders/Core/HitboxSet.cs" id="1_lrikc"]
+[ext_resource type="Script" uid="uid://bddlhnmtsegmh" path="res://CombatColliders/Core/HitboxSet.cs" id="1_18we8"]
+[ext_resource type="Script" uid="uid://bhc602qg2aow5" path="res://CombatColliders/Core/HitboxShape2D.cs" id="2_68uvp"]
+[ext_resource type="Script" uid="uid://cxuok3ox1l3g3" path="res://CombatColliders/Core/HurtboxSet.cs" id="3_uliqh"]
+[ext_resource type="Script" uid="uid://cwvt0jtncy48j" path="res://CombatColliders/Core/HurtboxShape2D.cs" id="4_k7lig"]
+
+[sub_resource type="Animation" id="Animation_18we8"]
+resource_name = "Moving"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HurtboxSet")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.666667, 1.36667, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"Start"
+}, {
+"args": [],
+"method": &"NextFrame"
+}, {
+"args": [],
+"method": &"NextFrame"
+}, {
+"args": [],
+"method": &"End"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_68uvp"]
+_data = {
+&"Moving": SubResource("Animation_18we8")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_18we8"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7vbr3"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gwv2b"]
 
 [node name="TestingSpace" type="Node2D"]
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_68uvp")
+}
+autoplay = "Moving"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+scale = Vector2(0.204683, 1)
+zoom = Vector2(4.5, 4.5)
+
 [node name="HitboxSet" type="Area2D" parent="."]
-collision_layer = 128
-collision_mask = 4
-script = ExtResource("1_lrikc")
+position = Vector2(-10, 0)
+collision_layer = 64
+collision_mask = 8
+script = ExtResource("1_18we8")
+Test = Callable()
 AddCollisionToCurrent = Callable()
 AddCollisionNext = Callable()
+AddEmptyFrame = Callable()
 ResetCurrentFrame = Callable()
 RemoveCurrentFrame = Callable()
 Shape = 2
 _debugColor = Color(1, 0, 0, 0.3)
 CurrentFrame = 0
+_isEnemy = true
+"Collision Layers" = null
+_enemyHurtboxLayer = 3
+_playerHurtboxLayer = 4
+_enemyHitboxLayer = 7
+_playerHitboxLayer = 8
+_alwaysVisible = false
+_alwaysActive = true
+ViewFrame = 0
+ResetAllFrames = Callable()
+RemoveAllFrames = Callable()
+metadata/_custom_type_script = "uid://bddlhnmtsegmh"
+
+[node name="Frame 0 Hitbox 0" type="CollisionShape2D" parent="HitboxSet"]
+shape = SubResource("CapsuleShape2D_18we8")
+debug_color = Color(1, 0, 0, 0.3)
+script = ExtResource("2_68uvp")
+
+[node name="HurtboxSet" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("3_uliqh")
+Test = Callable()
+AddCollisionToCurrent = Callable()
+AddCollisionNext = Callable()
+AddEmptyFrame = Callable()
+ResetCurrentFrame = Callable()
+RemoveCurrentFrame = Callable()
+Shape = 2
+_debugColor = Color(0.529412, 0.807843, 0.921569, 0.41)
+CurrentFrame = 2
 _isEnemy = false
 "Collision Layers" = null
 _enemyHurtboxLayer = 3
@@ -23,7 +109,19 @@ _enemyHitboxLayer = 7
 _playerHitboxLayer = 8
 _alwaysVisible = false
 _alwaysActive = false
-ViewFrame = 0
+ViewFrame = 2
 ResetAllFrames = Callable()
 RemoveAllFrames = Callable()
-metadata/_custom_type_script = "uid://bddlhnmtsegmh"
+metadata/_custom_type_script = "uid://cxuok3ox1l3g3"
+
+[node name="Frame 0 Hurtbox 0" type="CollisionShape2D" parent="HurtboxSet"]
+shape = SubResource("CapsuleShape2D_7vbr3")
+debug_color = Color(0.529412, 0.807843, 0.921569, 0.41)
+script = ExtResource("4_k7lig")
+
+[node name="Frame 2 Hurtbox 0" type="CollisionShape2D" parent="HurtboxSet"]
+position = Vector2(21, 0)
+shape = SubResource("CapsuleShape2D_gwv2b")
+debug_color = Color(0.529412, 0.807843, 0.921569, 0.41)
+script = ExtResource("4_k7lig")
+Frame = 2

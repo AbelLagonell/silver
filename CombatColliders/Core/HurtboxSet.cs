@@ -4,6 +4,7 @@ using Godot.Collections;
 
 [Tool]
 [GlobalClass]
+[Icon("res://Icons/Hurtbox_Set.svg")]
 public partial class HurtboxSet : CombatCollider2D<HurtboxShape2D>
 {
     [Signal]
@@ -14,12 +15,10 @@ public partial class HurtboxSet : CombatCollider2D<HurtboxShape2D>
 
     private new Color _debugColor = new Color("SkyBlue", 0.41f);
 
-    protected override void OnAreaShapeEntered(Rid areaRid, Area2D area, long areaShapeIndex, long localShapeIndex)
+    public void TakeDamage(float dmg, HitboxSet hitboxSet)
     {
-        if (area is not HitboxSet hitboxSet) return;
-        var hitboxShape = hitboxSet.GetChild<HitboxShape2D>((int)areaShapeIndex);
-        EmitSignalDamageTaken(hitboxShape.Damage, hitboxSet);
-        
+        EmitSignalDamageTaken(dmg, hitboxSet);
+        GD.Print("Hitbox Shape Entered");
     }
 
     protected override void ChangeCollision()
@@ -36,9 +35,9 @@ public partial class HurtboxSet : CombatCollider2D<HurtboxShape2D>
         Shape2D colliderShape = (Shape2D)System.Activator.CreateInstance(Shape2D.GetType());
 
         var hurtbox = AddShape(colliderShape, shapeName, _debugColor);
-        Frames[actingFrame].Add(hurtbox);
         
         AddChild(hurtbox);
+        Frames[actingFrame].Add(GetPathTo(hurtbox));
 
         if (Engine.IsEditorHint())
             hurtbox.Owner = EditorInterface.Singleton.GetEditedSceneRoot();

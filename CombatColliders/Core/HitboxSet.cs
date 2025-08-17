@@ -3,6 +3,7 @@ using Godot.Collections;
 
 [Tool]
 [GlobalClass]
+[Icon(("res://Icons/Hitbox_Set.svg"))]
 public partial class HitboxSet : CombatCollider2D<HitboxShape2D>
 {
     [Signal]
@@ -10,10 +11,18 @@ public partial class HitboxSet : CombatCollider2D<HitboxShape2D>
 
     private new Color _debugColor = new Color("Red", 0.3f);
 
-    protected override void OnAreaShapeEntered(Rid areaRid, Area2D area, long areaShapeIndex, long localShapeIndex)
+    public override void _Ready()
     {
-        if (area is not HurtboxSet hurtboxSet) return;
-        EmitSignalDamageGiven(hurtboxSet, hurtboxSet.GetChild((int)areaShapeIndex) as HurtboxShape2D);
+        base._Ready();
+        AreaShapeEntered += OnAreaShapeEntered;
+    }
+
+    protected void OnAreaShapeEntered(Rid areaRid, Area2D area, long areaShapeIndex, long localShapeIndex)
+    {
+        if (area.GetChild((int)areaShapeIndex) is not HurtboxShape2D hurtboxShape) return;
+        EmitSignalDamageGiven((HurtboxSet)area, hurtboxShape);
+        ((HurtboxSet)area).TakeDamage(GetChild<HitboxShape2D>((int)localShapeIndex).Damage, this);
+        GD.Print("Hurtbox Shape Entered");
     }
 
     protected override void ChangeCollision()
@@ -33,7 +42,6 @@ public partial class HitboxSet : CombatCollider2D<HitboxShape2D>
         Shape2D colliderShape = (Shape2D)System.Activator.CreateInstance(Shape2D.GetType());
 
         var hitbox = AddShape(colliderShape, shapeName, _debugColor);
-        Frames[actingFrame].Add(hitbox);
 
         //Defaults for stuff
 
@@ -41,5 +49,7 @@ public partial class HitboxSet : CombatCollider2D<HitboxShape2D>
 
         if (Engine.IsEditorHint())
             hitbox.Owner = EditorInterface.Singleton.GetEditedSceneRoot();
+
+        Frames[actingFrame].Add(GetPathTo(hitbox));
     }
 }

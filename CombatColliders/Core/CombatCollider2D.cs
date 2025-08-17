@@ -16,7 +16,7 @@ public abstract partial class CombatCollider2D<[MustBeVariant] T> : Area2D
     protected int CurrentFrame = 0;
     protected Color _debugColor;
 
-    protected Dictionary<int, Array<T>> Frames = new();
+    protected Dictionary<int, Array<NodePath>> Frames = new();
 
     private int ViewFrame
     {
@@ -116,14 +116,25 @@ public abstract partial class CombatCollider2D<[MustBeVariant] T> : Area2D
 
     public override void _Ready()
     {
+        if (!Engine.IsEditorHint()) ResetDictionary();
         SetCollisionLayerValue(1, false);
         SetCollisionMaskValue(1, false);
         ChangeCollision();
 
-        AreaShapeEntered += OnAreaShapeEntered;
+        End();
+        GD.Print($"READY {Name}");
     }
 
-    protected abstract void OnAreaShapeEntered(Rid areaRid, Area2D area, long areaShapeIndex, long localShapeIndex);
+    private void ResetDictionary()
+    {
+        foreach (var child in GetChildren())
+        {
+            if (child is not HurtboxShape2D hurt) continue;
+            if (!Frames.ContainsKey(hurt.Frame))
+                Frames.Add(hurt.Frame, new Array<NodePath>());
+            Frames[hurt.Frame].Add(GetPathTo(hurt));
+        }
+    }
 
     protected void Start()
     {
@@ -151,10 +162,14 @@ public abstract partial class CombatCollider2D<[MustBeVariant] T> : Area2D
     /// </summary>
     /// <param name="actingFrame">The frame that needs activation</param>
     /// <param name="deactivate">Whether the frame is to be on or off</param>
-    private void SetFrame(int actingFrame = 0, bool deactivate = false)
+    private void SetFrame(int actingFrame = 0, bool deactivate = false, bool visible = false)
     {
-        foreach (var shape2D in Frames[actingFrame])
-            shape2D.SetDisabled(deactivate);
+        foreach (var nodePath in Frames[actingFrame])
+        {
+            T node = GetNode<T>(nodePath);
+            node.SetDisabled(deactivate);
+            node.SetVisible(visible);
+        }
     }
 
     /// <summary>
@@ -163,13 +178,15 @@ public abstract partial class CombatCollider2D<[MustBeVariant] T> : Area2D
     private void DeactivateAllFrames()
     {
         foreach (var frame in Frames.Keys)
-            SetFrame(frame, deactivate: true);
+            SetFrame(frame, deactivate: !_alwaysActive, visible: _alwaysVisible || _alwaysActive);
     }
 
     private void ActivateFrame(int actingFrame)
     {
         foreach (var frame in Frames.Keys)
-            SetFrame(frame, frame != actingFrame);
+            SetFrame(frame,
+                  (frame != actingFrame) && !_alwaysActive,
+                  (frame == actingFrame) || _alwaysVisible || _alwaysActive);
     }
 
 
@@ -178,7 +195,7 @@ public abstract partial class CombatCollider2D<[MustBeVariant] T> : Area2D
         if (actingFrame < 0)
             throw new ArgumentException("Acting Frame is less than zero");
         if (!Frames.ContainsKey(actingFrame))
-            Frames.Add(actingFrame, new Array<T>());
+            Frames.Add(actingFrame, new Array<NodePath>());
 
         CurrentFrame = actingFrame;
         NotifyPropertyListChanged();
@@ -187,6 +204,7 @@ public abstract partial class CombatCollider2D<[MustBeVariant] T> : Area2D
     protected T AddShape(Shape2D shape, string name, Color debugColor)
     {
         T collider = new();
+        collider.Frame = CurrentFrame;
         collider.Shape = shape;
         collider.Name = name;
         collider.DebugColor = debugColor;
@@ -208,11 +226,17 @@ public abstract partial class CombatCollider2D<[MustBeVariant] T> : Area2D
         return default;
     }
 
+    private Callable AddEmptyFrame()
+    {
+        Frames.Add(++CurrentFrame, new Array<NodePath>());
+        return default;
+    }
+
     private Callable ResetCurrentFrame()
     {
         if (!Frames.TryGetValue(CurrentFrame, out var actingFrame)) return default;
-        foreach (var collider in actingFrame)
-            collider.QueueFree();
+        foreach (var nodePath in actingFrame)
+            GetNodeOrNull(nodePath)?.QueueFree();
 
         actingFrame.Clear();
         NotifyPropertyListChanged();
@@ -223,7 +247,7 @@ public abstract partial class CombatCollider2D<[MustBeVariant] T> : Area2D
     {
         ResetCurrentFrame();
         Frames.Remove(CurrentFrame);
-        CurrentFrame--;
+        if (CurrentFrame > 0) CurrentFrame--;
         NotifyPropertyListChanged();
         return default;
     }
@@ -250,11 +274,25 @@ public abstract partial class CombatCollider2D<[MustBeVariant] T> : Area2D
         return default;
     }
 
+    private Callable Test()
+    {
+        GD.Print($"Frames Dictionary: {Frames}\nFrame Keys: {Frames.Keys}");
+        return default;
+    }
+
     public override Array<Dictionary> _GetPropertyList()
     {
         var propList = new Array<Dictionary>();
 
         propList.AddRange([
+            new()
+            {
+                { "name", "Test" },
+                { "type", (int)Variant.Type.Callable },
+                { "usage", (int)PropertyUsageFlags.Default },
+                { "hint", (int)PropertyHint.ToolButton },
+                { "hint_string", "Print Frame" }
+            },
             new()
             {
                 { "name", "AddCollisionToCurrent" },
@@ -270,6 +308,14 @@ public abstract partial class CombatCollider2D<[MustBeVariant] T> : Area2D
                 { "usage", (int)PropertyUsageFlags.Default },
                 { "hint", (int)PropertyHint.ToolButton },
                 { "hint_string", "Add Collider To Next Frame" }
+            },
+            new()
+            {
+                { "name", "AddEmptyFrame" },
+                { "type", (int)Variant.Type.Callable },
+                { "usage", (int)PropertyUsageFlags.Default },
+                { "hint", (int)PropertyHint.ToolButton },
+                { "hint_string", "Add an Empty Frame" }
             },
             new()
             {
@@ -374,6 +420,24 @@ public abstract partial class CombatCollider2D<[MustBeVariant] T> : Area2D
                 { "hint", (int)PropertyHint.Range },
                 { "hint_string", $"0,{(Frames.Count != 0 ? Frames.Count - 1 : 0)},1" },
             },
+        ]);
+
+        if (Frames.TryGetValue(_viewFrame, out var viewList))
+        {
+            _viewArray = new Array<T>();
+            foreach (var nodePath in viewList)
+                _viewArray.Add(GetNode<T>(nodePath));
+            propList.Add(new()
+            {
+                { "name", "_viewArray" },
+                { "type", (int)Variant.Type.Array },
+                { "usage", (int)(PropertyUsageFlags.ReadOnly | PropertyUsageFlags.Editor) },
+                { "hint", (int)PropertyHint.TypeString },
+                { "hint_string", $"{Variant.Type.Object}/{PropertyHint.NodeType:D}:CollisionShape2D" },
+            });
+        }
+
+        propList.AddRange([
             new()
             {
                 { "name", "ResetAllFrames" },
@@ -391,19 +455,6 @@ public abstract partial class CombatCollider2D<[MustBeVariant] T> : Area2D
                 { "hint_string", "Remove All Frames" }
             },
         ]);
-
-        if (Frames.TryGetValue(_viewFrame, out var viewFrame) && viewFrame.Count != 0)
-        {
-            _viewArray = Frames[_viewFrame];
-            propList.Add(new()
-            {
-                { "name", "_viewArray" },
-                { "type", (int)Variant.Type.Array },
-                { "usage", (int)(PropertyUsageFlags.ReadOnly | PropertyUsageFlags.Editor) },
-                { "hint", (int)PropertyHint.TypeString },
-                { "hint_string", $"{Variant.Type.Object}/{PropertyHint.NodeType:D}:CollisionShape2D" },
-            });
-        }
 
         return propList;
     }
