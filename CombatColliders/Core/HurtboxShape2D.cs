@@ -2,15 +2,32 @@ using Godot;
 
 [Tool]
 [GlobalClass]
-public partial class HurtboxShape2D : CollisionShape2D
+public partial class HurtboxShape2D : CombatShape2D
 {
-    [Export] public int Frame;
+    private HurtboxSet _parent;
 
-    private void PlaceInFrameBefore() { }
+    public override void _Ready()
+    {
+        _parent = GetParentOrNull<HurtboxSet>();
+    }
 
-    private void PlaceInCurrentFrame() { }
+    protected override void PlaceInFrameBefore()
+    {
+        _parent.AddCollisionToFrame(Frame - 1);
+    }
 
-    private void PlaceInNextFrame() { }
+    protected override void PlaceInCurrentFrame()
+    {
+        _parent.AddCollisionToFrame(Frame);
+    }
 
-    private void RemoveCurrentCollider() { }
+    protected override void PlaceInNextFrame()
+    {
+        _parent.AddCollisionToFrame(Frame + 1);
+    }
+
+    protected override void RemoveCurrentCollider()
+    {
+        _parent.RemoveCollisionFromFrame(Frame, _parent.GetPathTo(this));
+    }
 }

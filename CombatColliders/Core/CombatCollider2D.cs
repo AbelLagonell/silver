@@ -4,7 +4,7 @@ using Godot.Collections;
 
 [Tool]
 public abstract partial class CombatCollider2D<[MustBeVariant] T> : Area2D
-    where T : HurtboxShape2D, new()
+    where T : CombatShape2D, new()
 {
     public enum ShapeType
     {
@@ -186,12 +186,12 @@ public abstract partial class CombatCollider2D<[MustBeVariant] T> : Area2D
     {
         foreach (var frame in Frames.Keys)
             SetFrame(frame,
-                  (frame != actingFrame) && !_alwaysActive,
-                  (frame == actingFrame) || _alwaysVisible || _alwaysActive);
+                     (frame != actingFrame) && !_alwaysActive,
+                     (frame == actingFrame) || _alwaysVisible || _alwaysActive);
     }
 
 
-    protected virtual void AddCollisionToFrame(int actingFrame)
+    public virtual void AddCollisionToFrame(int actingFrame)
     {
         if (actingFrame < 0)
             throw new ArgumentException("Acting Frame is less than zero");
@@ -200,6 +200,19 @@ public abstract partial class CombatCollider2D<[MustBeVariant] T> : Area2D
 
         _currentFrame = actingFrame;
         NotifyPropertyListChanged();
+    }
+
+    public void RemoveCollisionFromFrame(int actingFrame, NodePath path)
+    {
+        if (actingFrame < 0)
+            throw new ArgumentException("Acting Frame is less than zero");
+        if (!Frames.ContainsKey(actingFrame))
+            throw new ArgumentException("Acting Frame does not exist");
+        for (int i = 0; i < Frames[actingFrame].Count; i++)
+            if (Frames[actingFrame][i] == path)
+                Frames[actingFrame].RemoveAt(i);
+
+        GetNode(path).QueueFree();
     }
 
     protected T AddShape(Shape2D shape, string name, Color debugColor)
@@ -358,7 +371,7 @@ public abstract partial class CombatCollider2D<[MustBeVariant] T> : Area2D
                 { "name", "CurrentFrame" },
                 { "type", (int)Variant.Type.Int },
                 { "hint", (int)PropertyHint.Range },
-                { "hint_string", $"0,{(Frames.Count != 0 ? Frames.Count + 1 : 1)},or_greater,hide_slider" },
+                { "hint_string", $"0,{(Frames.Keys.Count != 0 ? Frames.Keys.Count + 1 : 1)},or_greater,hide_slider" },
             },
             new()
             {
@@ -419,7 +432,7 @@ public abstract partial class CombatCollider2D<[MustBeVariant] T> : Area2D
                 { "name", "ViewFrame" },
                 { "type", (int)Variant.Type.Int },
                 { "hint", (int)PropertyHint.Range },
-                { "hint_string", $"0,{(Frames.Count != 0 ? Frames.Count - 1 : 0)},1" },
+                { "hint_string", $"0,{(Frames.Keys.Count != 0 ? Frames.Keys.Count - 1 : 0)},1" },
             },
         ]);
 

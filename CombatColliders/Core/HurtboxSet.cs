@@ -26,7 +26,7 @@ public partial class HurtboxSet : CombatCollider2D<HurtboxShape2D>
         SetCollisionLayerValue(EnemyHurtboxLayer, IsEnemy);
     }
     
-    protected override void AddCollisionToFrame(int actingFrame)
+    public override void AddCollisionToFrame(int actingFrame)
     {
         base.AddCollisionToFrame(actingFrame);
 
