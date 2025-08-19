@@ -87,6 +87,10 @@ metadata/_custom_type_script = "uid://bddlhnmtsegmh"
 shape = SubResource("CapsuleShape2D_18we8")
 debug_color = Color(1, 0, 0, 0.3)
 script = ExtResource("2_68uvp")
+PlaceInCurrentFrame = Callable()
+PlaceInNextFrame = Callable()
+RemoveCurrentCollider = Callable()
+Frame = 0
 
 [node name="HurtboxSet" type="Area2D" parent="."]
 collision_layer = 8
@@ -118,10 +122,18 @@ metadata/_custom_type_script = "uid://cxuok3ox1l3g3"
 shape = SubResource("CapsuleShape2D_7vbr3")
 debug_color = Color(0.529412, 0.807843, 0.921569, 0.41)
 script = ExtResource("4_k7lig")
+PlaceInCurrentFrame = Callable()
+PlaceInNextFrame = Callable()
+RemoveCurrentCollider = Callable()
+Frame = 0
 
 [node name="Frame 2 Hurtbox 0" type="CollisionShape2D" parent="HurtboxSet"]
 position = Vector2(21, 0)
 shape = SubResource("CapsuleShape2D_gwv2b")
 debug_color = Color(0.529412, 0.807843, 0.921569, 0.41)
 script = ExtResource("4_k7lig")
+PlaceInFrameBefore = Callable()
+PlaceInCurrentFrame = Callable()
+PlaceInNextFrame = Callable()
+RemoveCurrentCollider = Callable()
 Frame = 2
